@@ -7,3 +7,5 @@
 [![codecov.io](https://codecov.io/gh/MarcoEidinger/npsapi-swift/branch/master/graphs/badge.svg)](https://codecov.io/gh/MarcoEidinger/npsapi-swift/branch/master)
 
 Swift library for the US National Park Service application program interface (NPS API). The API provides information about parks / monuments / historical sites throughout the US.
+
+Required API key can be requested for free from [NPS Developer website](https://www.nps.gov/subjects/developer/get-started.htm)
