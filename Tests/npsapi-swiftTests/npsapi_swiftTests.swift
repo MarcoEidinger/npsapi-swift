@@ -26,7 +26,7 @@ final class npsapi_swiftTests: XCTestCase {
             }
             XCTAssertNotNil(subscription)
             XCTAssertNotNil(subscription)
-            wait(for: [expectation], timeout: 30.0)
+            wait(for: [expectation], timeout: 45.0)
         } else {
             XCTFail()
         }
