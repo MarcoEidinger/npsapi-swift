@@ -6,11 +6,11 @@ final class npsapi_swiftTests: XCTestCase {
     func testFetchParks() {
         if #available(iOS 13.1, *) {
             guard let data = Data(base64Encoded: "Y3hKaE96ZFBERzg1YjRITnBBYm85MzJHc1Y3c3Q3a1BVUVhObmQ0Vw==") else {
-                XCTFail()
+                XCTFail("invalid api key for testing")
                 return
             }
             guard let testKey = String(data: data, encoding: .utf8) else {
-                XCTFail()
+                XCTFail("invalid api key for testing")
                 return
             }
             let api = NationalParkServiceApiForSwift(apiKey: testKey)
@@ -22,7 +22,7 @@ final class npsapi_swiftTests: XCTestCase {
                     expectation.fulfill()
                 case .failure(let error):
                     print(error)
-                    XCTFail()
+                    XCTFail("subscription returned error unexpectedly")
                 }
             }) { (parks) in
                 XCTAssertTrue(parks.count > 0, "We have parks")
@@ -36,11 +36,11 @@ final class npsapi_swiftTests: XCTestCase {
             XCTAssertNotNil(subscription)
             wait(for: [expectation], timeout: 45.0)
         } else {
-            XCTFail()
+            XCTFail("not supported version")
         }
     }
 
     static var allTests = [
-        ("testFetchParks", testFetchParks),
+        ("testFetchParks", testFetchParks)
     ]
 }
