@@ -44,6 +44,9 @@
                 <a href="Enums/NationalParkServiceApiError.html">NationalParkServiceApiError</a>
               </li>
               <li class="nav-group-task">
+                <a href="Enums/RequestableAlertField.html">RequestableAlertField</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums/RequestableParkField.html">RequestableParkField</a>
               </li>
               <li class="nav-group-task">
@@ -52,8 +55,19 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/RequestableField.html">RequestableField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Alert.html">Alert</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Structs/Park.html">Park</a>
               </li>
@@ -74,6 +88,37 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12npsapi_swift5AlertV"></a>
+                    <a name="//apple_ref/swift/Struct/Alert" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12npsapi_swift5AlertV">Alert</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Alerts communicate information about hazardous, potentially hazardous, or changing conditions that may affect a visit to a national park. Alert data includes the type of alert, title, description, and optional link to additional information.</p>
+
+                        <a href="Structs/Alert.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Alert</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/Model/Alert.swift#L28-L45">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -126,7 +171,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RequestOptions</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RequestOptions</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/RequestableField.html">RequestableField</a></span></code></pre>
 
                         </div>
                       </div>

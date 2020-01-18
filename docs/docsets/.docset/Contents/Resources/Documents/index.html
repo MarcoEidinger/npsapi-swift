@@ -43,6 +43,9 @@
                 <a href="Enums/NationalParkServiceApiError.html">NationalParkServiceApiError</a>
               </li>
               <li class="nav-group-task">
+                <a href="Enums/RequestableAlertField.html">RequestableAlertField</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums/RequestableParkField.html">RequestableParkField</a>
               </li>
               <li class="nav-group-task">
@@ -51,8 +54,19 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/RequestableField.html">RequestableField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Alert.html">Alert</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Structs/Park.html">Park</a>
               </li>
@@ -71,13 +85,37 @@
 
 <p><a href="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager Compatible"></a>
 <a href="https://travis-ci.com/MarcoEidinger/npsapi-swift"><img src="https://travis-ci.com/MarcoEidinger/npsapi-swift.svg?branch=master" alt="Build Status"></a>
-<a href="https://codebeat.co/projects/github-com-marcoeidinger-npsapi-swift-master"><img src="https://codebeat.co/badges/bf8789bb-cf03-4412-af2b-628461676290" alt="codebeat badge"></a>
 <a href="https://houndci.com"><img src="https://img.shields.io/badge/Protected_by-Hound-a873d1.svg" alt=""></a>
-<a href="https://codecov.io/gh/MarcoEidinger/npsapi-swift/branch/master"><img src="https://codecov.io/gh/MarcoEidinger/npsapi-swift/branch/master/graphs/badge.svg" alt="codecov.io"></a></p>
+<a href="https://codebeat.co/projects/github-com-marcoeidinger-npsapi-swift-master"><img src="https://codebeat.co/badges/9694c6d7-c09f-4b9d-9a58-10ce2783cb69" alt="codebeat badge"></a>
+<a href="https://codecov.io/gh/MarcoEidinger/npsapi-swift/branch/master"><img src="https://codecov.io/gh/MarcoEidinger/npsapi-swift/branch/master/graphs/badge.svg" alt="codecov.io"></a>
+<a href="https://marcoeidinger.github.io/npsapi-swift/"><img src="https://raw.githubusercontent.com/MarcoEidinger/npsapi-swift/master/docs/badge.svg?sanitize=true" alt="documentation"></a></p>
 
 <p>Swift library for the US National Park Service application program interface (NPS API). The API provides information about parks / monuments / historical sites throughout the US.</p>
 
-<p>Required API key can be requested for free from <a href="https://www.nps.gov/subjects/developer/get-started.htm">NPS Developer website</a> :)</p>
+<p>Required API key can be requested for free from <a href="https://www.nps.gov/subjects/developer/get-started.htm">NPS Developer website</a></p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>If you encounter any problem or have a question on adding package to an Xcode project, I suggest the <a href="https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app">Adding Package Dependencies to Your App</a> guide article from Apple.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>Example to fetch park related information</p>
+<pre class="highlight swift"><code>        <span class="k">let</span> <span class="nv">cancellablePipeline</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="nf">fetchParks</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">sink</span><span class="p">(</span><span class="nv">receiveCompletion</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"Park request failed: </span><span class="se">\(</span><span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="n">error</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">},</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">parks</span><span class="p">)</span> <span class="k">in</span>
+                <span class="n">parks</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span>
+                    <span class="nf">print</span><span class="p">(</span><span class="s">"Park </span><span class="se">\(</span><span class="nv">$0</span><span class="o">.</span><span class="n">parkCode</span><span class="se">)</span><span class="s"> is a </span><span class="se">\(</span><span class="nv">$0</span><span class="o">.</span><span class="n">designation</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+</code></pre>
+
+<p>Complete client-side API documentation is available <a href="https://marcoeidinger.github.io/npsapi-swift/">here</a></p>
+<h2 id='supported-types' class='heading'>Supported Types</h2>
+
+<ul>
+<li>Parks</li>
+<li>Alerts</li>
+</ul>
 
           </section>
         </section>
