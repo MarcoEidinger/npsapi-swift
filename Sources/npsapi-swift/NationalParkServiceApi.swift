@@ -6,7 +6,7 @@ enum NationalParkServiceApiError: Error {
 }
 
 @available(iOS 13.0, *)
-class NationalParkServiceApiForSwift {
+class NationalParkServiceApi {
 
     private let apiKey: String
     private let baseUrlRemoteApi: String = "https://developer.nps.gov/api/v1/"

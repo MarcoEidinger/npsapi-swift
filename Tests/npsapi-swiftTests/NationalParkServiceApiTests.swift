@@ -1,7 +1,7 @@
 import XCTest
 @testable import npsapi_swift
 
-final class npsapi_swiftTests: XCTestCase {
+final class NationalParkServiceApiTests: XCTestCase {
 
     func testFetchParks() {
         if #available(iOS 13.1, *) {
@@ -13,7 +13,7 @@ final class npsapi_swiftTests: XCTestCase {
                 XCTFail("invalid api key for testing")
                 return
             }
-            let api = NationalParkServiceApiForSwift(apiKey: testKey)
+            let api = NationalParkServiceApi(apiKey: testKey)
             let expectation = XCTestExpectation(description: "Download Parks")
             let publisher = api.fetchParks(by: ["acad"])
             let subscription = publisher.sink(receiveCompletion: { (completion) in
