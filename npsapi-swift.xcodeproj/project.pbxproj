@@ -21,10 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		OBJ_24 /* npsapi_swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* npsapi_swift.swift */; };
+		8ADC098123D28F720032B68B /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC097F23D28F720032B68B /* States.swift */; };
+		8ADC098223D28F720032B68B /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098023D28F720032B68B /* Park.swift */; };
+		OBJ_24 /* NationalParkServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* NationalParkServiceApi.swift */; };
 		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
-		OBJ_43 /* npsapi_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* npsapi_swiftTests.swift */; };
+		OBJ_43 /* NationalParkServiceApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* NationalParkServiceApiTests.swift */; };
 		OBJ_45 /* npsapi_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "npsapi-swift::npsapi-swift::Product" /* npsapi_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,12 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8ADC097F23D28F720032B68B /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		8ADC098023D28F720032B68B /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
-		OBJ_13 /* npsapi_swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = npsapi_swiftTests.swift; sourceTree = "<group>"; };
+		OBJ_13 /* NationalParkServiceApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApiTests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* npsapi_swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = npsapi_swift.swift; sourceTree = "<group>"; };
+		OBJ_9 /* NationalParkServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApi.swift; sourceTree = "<group>"; };
 		"npsapi-swift::npsapi-swift::Product" /* npsapi_swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = npsapi_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"npsapi-swift::npsapi-swiftTests::Product" /* npsapi_swiftTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = npsapi_swiftTests.xctest; path = "npsapi-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8ADC097E23D28F3D0032B68B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8ADC098023D28F720032B68B /* Park.swift */,
+				8ADC097F23D28F720032B68B /* States.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_12 /* XCTestManifests.swift */,
-				OBJ_13 /* npsapi_swiftTests.swift */,
+				OBJ_13 /* NationalParkServiceApiTests.swift */,
 			);
 			name = "npsapi-swiftTests";
 			path = "Tests/npsapi-swiftTests";
@@ -125,7 +138,8 @@
 		OBJ_8 /* npsapi-swift */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* npsapi_swift.swift */,
+				8ADC097E23D28F3D0032B68B /* Model */,
+				OBJ_9 /* NationalParkServiceApi.swift */,
 			);
 			name = "npsapi-swift";
 			path = "Sources/npsapi-swift";
@@ -236,7 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_24 /* npsapi_swift.swift in Sources */,
+				OBJ_24 /* NationalParkServiceApi.swift in Sources */,
+				8ADC098223D28F720032B68B /* Park.swift in Sources */,
+				8ADC098123D28F720032B68B /* States.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +269,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_42 /* XCTestManifests.swift in Sources */,
-				OBJ_43 /* npsapi_swiftTests.swift in Sources */,
+				OBJ_43 /* NationalParkServiceApiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
