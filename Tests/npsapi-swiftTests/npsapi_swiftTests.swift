@@ -5,7 +5,15 @@ final class npsapi_swiftTests: XCTestCase {
 
     func testFetchParks() {
         if #available(iOS 13.1, *) {
-            let api = NationalParkServiceApiForSwift(apiKey: "cxJhOzdPDG85b4HNpAbo932GsV7st7kPUQXNnd4W")
+            guard let data = Data(base64Encoded: "Y3hKaE96ZFBERzg1YjRITnBBYm85MzJHc1Y3c3Q3a1BVUVhObmQ0Vw==") else {
+                XCTFail()
+                return
+            }
+            guard let testKey = String(data: data, encoding: .utf8) else {
+                XCTFail()
+                return
+            }
+            let api = NationalParkServiceApiForSwift(apiKey: testKey)
             let expectation = XCTestExpectation(description: "Download Parks")
             let publisher = api.fetchParks(by: ["acad"])
             let subscription = publisher.sink(receiveCompletion: { (completion) in
