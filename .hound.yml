@@ -1,2 +1,9 @@
 swift:
+  enabled: true
   config_file: .swiftlint.yml
+
+jshint:
+  enabled: false
+
+scss:
+  enabled: false

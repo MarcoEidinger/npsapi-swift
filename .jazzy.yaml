@@ -1,0 +1,9 @@
+
+author: Marco Eidinger
+author_url: https://eidinger.us
+root_url: https://realm.github.io/SwiftLint/
+github_url: https://github.com/MarcoEidinger/npsapi-swift
+github_file_prefix: https://github.com/MarcoEidinger/npsapi-swift/tree/master
+theme: apple
+clean: true
+copyright: '© 2020 [Marco Eidinger](https://eidinger.us) under MIT.'
