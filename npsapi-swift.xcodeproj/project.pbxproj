@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		8ADC098123D28F720032B68B /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC097F23D28F720032B68B /* States.swift */; };
+		8ADC098223D28F720032B68B /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098023D28F720032B68B /* Park.swift */; };
 		OBJ_24 /* npsapi_swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* npsapi_swift.swift */; };
 		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8ADC097F23D28F720032B68B /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		8ADC098023D28F720032B68B /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* npsapi_swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = npsapi_swiftTests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -75,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8ADC097E23D28F3D0032B68B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8ADC098023D28F720032B68B /* Park.swift */,
+				8ADC097F23D28F720032B68B /* States.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 		OBJ_8 /* npsapi-swift */ = {
 			isa = PBXGroup;
 			children = (
+				8ADC097E23D28F3D0032B68B /* Model */,
 				OBJ_9 /* npsapi_swift.swift */,
 			);
 			name = "npsapi-swift";
@@ -237,6 +251,8 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_24 /* npsapi_swift.swift in Sources */,
+				8ADC098223D28F720032B68B /* Park.swift in Sources */,
+				8ADC098123D28F720032B68B /* States.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
