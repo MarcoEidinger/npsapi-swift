@@ -21,8 +21,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		8ADC098123D28F720032B68B /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC097F23D28F720032B68B /* States.swift */; };
+		8ADC098123D28F720032B68B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC097F23D28F720032B68B /* State.swift */; };
 		8ADC098223D28F720032B68B /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098023D28F720032B68B /* Park.swift */; };
+		8ADC098623D2D35D0032B68B /* RequestOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098523D2D35D0032B68B /* RequestOption.swift */; };
+		8ADC098823D347C20032B68B /* NationalParkServiceApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098723D347C20032B68B /* NationalParkServiceApiError.swift */; };
+		8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098923D356C20032B68B /* RequestUrlFactory.swift */; };
 		OBJ_24 /* NationalParkServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* NationalParkServiceApi.swift */; };
 		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -48,8 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8ADC097F23D28F720032B68B /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		8ADC097F23D28F720032B68B /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		8ADC098023D28F720032B68B /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
+		8ADC098523D2D35D0032B68B /* RequestOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOption.swift; sourceTree = "<group>"; };
+		8ADC098723D347C20032B68B /* NationalParkServiceApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApiError.swift; sourceTree = "<group>"; };
+		8ADC098923D356C20032B68B /* RequestUrlFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUrlFactory.swift; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* NationalParkServiceApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApiTests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -83,7 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				8ADC098023D28F720032B68B /* Park.swift */,
-				8ADC097F23D28F720032B68B /* States.swift */,
+				8ADC097F23D28F720032B68B /* State.swift */,
+				8ADC098523D2D35D0032B68B /* RequestOption.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +147,8 @@
 			children = (
 				8ADC097E23D28F3D0032B68B /* Model */,
 				OBJ_9 /* NationalParkServiceApi.swift */,
+				8ADC098723D347C20032B68B /* NationalParkServiceApiError.swift */,
+				8ADC098923D356C20032B68B /* RequestUrlFactory.swift */,
 			);
 			name = "npsapi-swift";
 			path = "Sources/npsapi-swift";
@@ -250,9 +259,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				8ADC098623D2D35D0032B68B /* RequestOption.swift in Sources */,
+				8ADC098823D347C20032B68B /* NationalParkServiceApiError.swift in Sources */,
 				OBJ_24 /* NationalParkServiceApi.swift in Sources */,
 				8ADC098223D28F720032B68B /* Park.swift in Sources */,
-				8ADC098123D28F720032B68B /* States.swift in Sources */,
+				8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */,
+				8ADC098123D28F720032B68B /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
