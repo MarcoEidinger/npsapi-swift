@@ -1,8 +1,6 @@
 language: swift
 osx_image: xcode11
 script:
- - swift build
- - swift test
  - xcodebuild -scheme npsapi-swift-Package -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' build test
- after_success:
+after_success:
   - bash <(curl -s https://codecov.io/bash)
