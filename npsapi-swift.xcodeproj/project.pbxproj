@@ -26,6 +26,8 @@
 		8ADC098623D2D35D0032B68B /* RequestOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098523D2D35D0032B68B /* RequestOption.swift */; };
 		8ADC098823D347C20032B68B /* NationalParkServiceApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098723D347C20032B68B /* NationalParkServiceApiError.swift */; };
 		8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098923D356C20032B68B /* RequestUrlFactory.swift */; };
+		8ADC098F23D37B990032B68B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098E23D37B990032B68B /* Alert.swift */; };
+		8ADC099123D37F960032B68B /* RequestableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC099023D37F960032B68B /* RequestableField.swift */; };
 		OBJ_24 /* NationalParkServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* NationalParkServiceApi.swift */; };
 		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -56,6 +58,8 @@
 		8ADC098523D2D35D0032B68B /* RequestOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOption.swift; sourceTree = "<group>"; };
 		8ADC098723D347C20032B68B /* NationalParkServiceApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApiError.swift; sourceTree = "<group>"; };
 		8ADC098923D356C20032B68B /* RequestUrlFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUrlFactory.swift; sourceTree = "<group>"; };
+		8ADC098E23D37B990032B68B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		8ADC099023D37F960032B68B /* RequestableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableField.swift; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* NationalParkServiceApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApiTests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				8ADC098023D28F720032B68B /* Park.swift */,
 				8ADC097F23D28F720032B68B /* State.swift */,
 				8ADC098523D2D35D0032B68B /* RequestOption.swift */,
+				8ADC098E23D37B990032B68B /* Alert.swift */,
+				8ADC099023D37F960032B68B /* RequestableField.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 				8ADC098223D28F720032B68B /* Park.swift in Sources */,
 				8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */,
 				8ADC098123D28F720032B68B /* State.swift in Sources */,
+				8ADC098F23D37B990032B68B /* Alert.swift in Sources */,
+				8ADC099123D37F960032B68B /* RequestableField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

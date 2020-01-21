@@ -20,7 +20,7 @@ class RequestUrlFactory {
         return urlComponents
     }
 
-    func add(_ requestOptions: RequestOptions<RequestableParkField>?, to urlComponents: inout URLComponents) {
+    func add<T: RequestableField>(_ requestOptions: RequestOptions<T>?, to urlComponents: inout URLComponents) {
         if let limit = requestOptions?.limit {
             urlComponents.queryItems?.append(URLQueryItem(name: "limit", value: String(limit)))
         }
@@ -30,7 +30,7 @@ class RequestUrlFactory {
         }
 
         if let fields = requestOptions?.fields {
-            let fieldsQueryParameterValue = fields.map { $0.debugDescription }.joined(separator: ",")
+            let fieldsQueryParameterValue = fields.map { $0.fieldName }.joined(separator: ",")
             if fieldsQueryParameterValue.isEmpty == false {
                 urlComponents.queryItems?.append(URLQueryItem(name: "fields", value: fieldsQueryParameterValue))
             }

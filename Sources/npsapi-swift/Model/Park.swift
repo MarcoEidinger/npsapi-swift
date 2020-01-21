@@ -8,7 +8,7 @@
 import Foundation
 
 /// Requestable attribute of Park model
-public enum RequestableParkField: String, CustomDebugStringConvertible {
+public enum RequestableParkField: String, RequestableField {
     /// Park identification string
     case id
     /// A variable width character code used to identify a specific park
@@ -28,10 +28,10 @@ public enum RequestableParkField: String, CustomDebugStringConvertible {
     /// General description of the weather in the park over the course of a year
     case weatherInfo
 
-    /// Returns raw value, i.e. string
-    public var debugDescription: String {
-        return self.rawValue
-    }
+//    /// Returns raw value, i.e. string
+//    public var debugDescription: String {
+//        return self.rawValue
+//    }
 }
 
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.

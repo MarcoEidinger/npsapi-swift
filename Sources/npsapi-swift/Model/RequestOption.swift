@@ -8,7 +8,7 @@
 import Foundation
 
 /// Generic options to influence or restrict the amount of data to be fetched from the National Park Service API
-public struct RequestOptions<T> {
+public struct RequestOptions<T: RequestableField> {
     /// Number of results to return per request. Default is 50.
     public let limit: Int?
     /// Term to search on
