@@ -27,7 +27,7 @@ public enum RequestableAlertField: String, RequestableField {
 /// Alerts communicate information about hazardous, potentially hazardous, or changing conditions that may affect a visit to a national park. Alert data includes the type of alert, title, description, and optional link to additional information.
 public struct Alert: Decodable {
     enum CodingKeys: CodingKey {
-      case id, parkCode, title, description, category, url
+        case id, parkCode, title, description, category, url
     }
 
     /// Unique identifier for an alert record

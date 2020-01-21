@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		8A61E54923D75AFB0052181F /* NewsRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E54823D75AFB0052181F /* NewsRelease.swift */; };
 		8ADC098123D28F720032B68B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC097F23D28F720032B68B /* State.swift */; };
 		8ADC098223D28F720032B68B /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098023D28F720032B68B /* Park.swift */; };
 		8ADC098623D2D35D0032B68B /* RequestOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098523D2D35D0032B68B /* RequestOption.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A61E54823D75AFB0052181F /* NewsRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRelease.swift; sourceTree = "<group>"; };
 		8ADC097F23D28F720032B68B /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		8ADC098023D28F720032B68B /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		8ADC098523D2D35D0032B68B /* RequestOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOption.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				8ADC098523D2D35D0032B68B /* RequestOption.swift */,
 				8ADC098E23D37B990032B68B /* Alert.swift */,
 				8ADC099023D37F960032B68B /* RequestableField.swift */,
+				8A61E54823D75AFB0052181F /* NewsRelease.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				8ADC098623D2D35D0032B68B /* RequestOption.swift in Sources */,
 				8ADC098823D347C20032B68B /* NationalParkServiceApiError.swift in Sources */,
 				OBJ_24 /* NationalParkServiceApi.swift in Sources */,
+				8A61E54923D75AFB0052181F /* NewsRelease.swift in Sources */,
 				8ADC098223D28F720032B68B /* Park.swift in Sources */,
 				8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */,
 				8ADC098123D28F720032B68B /* State.swift in Sources */,

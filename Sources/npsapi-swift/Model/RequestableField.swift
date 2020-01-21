@@ -14,7 +14,7 @@ public protocol RequestableField: RawRepresentable {
 }
 
 public extension RequestableField {
-  var fieldName: String {
-    return String(describing: self.rawValue)
-  }
+    var fieldName: String {
+        return String(describing: self.rawValue)
+    }
 }

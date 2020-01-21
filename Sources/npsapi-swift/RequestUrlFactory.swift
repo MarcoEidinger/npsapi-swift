@@ -15,7 +15,7 @@ class RequestUrlFactory {
         urlComponents.host = "developer.nps.gov"
         urlComponents.path = "/api/v1" + endpoint
         urlComponents.queryItems = [
-           URLQueryItem(name: "api_key", value: apiKey)
+            URLQueryItem(name: "api_key", value: apiKey)
         ]
         return urlComponents
     }
