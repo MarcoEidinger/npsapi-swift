@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Eidinger, Marco on 1/16/20.
 //
@@ -27,17 +27,12 @@ public enum RequestableParkField: String, RequestableField {
     case directionsInfo
     /// General description of the weather in the park over the course of a year
     case weatherInfo
-
-//    /// Returns raw value, i.e. string
-//    public var debugDescription: String {
-//        return self.rawValue
-//    }
 }
 
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.
 public struct Park: Decodable {
     enum CodingKeys: CodingKey {
-      case id, parkCode, name, fullName, description, url, designation, states, directionsInfo, directionsUrl, weatherInfo
+        case id, parkCode, name, fullName, description, url, designation, states, directionsInfo, directionsUrl, weatherInfo
     }
 
     /// Park identification string
@@ -67,7 +62,7 @@ public struct Park: Decodable {
 extension Park {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         id = try values.decode(String.self, forKey: .id)
         parkCode = try values.decode(String.self, forKey: .parkCode)
         name = try values.decode(String.self, forKey: .name)

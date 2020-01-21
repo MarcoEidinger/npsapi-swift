@@ -1,6 +1,12 @@
 import Foundation
 import Combine
 
+private enum NationalParkServiceApiEndpoint: String {
+    case parks = "/parks"
+    case alerts = "/alerts"
+    case newsRelease = "/newsreleases"
+}
+
 /// Main API class to interact with the National Park Service API
 public class NationalParkServiceApi {
 
@@ -9,86 +15,72 @@ public class NationalParkServiceApi {
 
     private let urlFactory: RequestUrlFactory = RequestUrlFactory()
 
+    private var errorTransformer: (Error) -> NationalParkServiceApiError = { _ in NationalParkServiceApiError.invalidServerResponse }
+
     init(apiKey: String) {
         self.apiKey = apiKey
     }
 
-    /**
-        fetch park information
+    // MARK: public functions
 
-    */
+    /**
+     fetch park information
+
+     */
     public func fetchParks(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], NationalParkServiceApiError> {
 
-        guard let validUrl = self.parksUrl(by: parkCodes, in: states, requestOptions) else {
+        guard let validUrl = self.url(.parks, by: parkCodes, in: states, requestOptions) else {
             return Fail(error: NationalParkServiceApiError.invalidInput).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap({ (result) -> [Park] in
-                let parks = try JSONDecoder().decode(Parks.self, from: self.jsonData(from: result))
-                return parks.data
-            })
-            .mapError { _ in
-                // if it's our kind of error already, we can return it directly
-                return NationalParkServiceApiError.invalidServerResponse
-            }
+            .map { $0.data }
+            .decode(type: Parks.self, decoder: JSONDecoder())
+            .map { $0.data }
+            .mapError(self.errorTransformer)
             .eraseToAnyPublisher()
-    }
-
-    private func parksUrl(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableParkField>?) -> URL? {
-
-        var urlComponents = self.urlFactory.apiUrlComponents(for: "/parks", authorizedBy: self.apiKey)
-
-        let parkCodeQueryParameterValue = parkCodes?.joined(separator: ",")
-        if parkCodeQueryParameterValue != nil {
-            urlComponents.queryItems?.append(URLQueryItem(name: "parkCode", value: parkCodeQueryParameterValue))
-        }
-
-        let statesQueryParameterValue = states?.map { $0.debugDescription }.joined(separator: ",")
-        if statesQueryParameterValue != nil {
-            urlComponents.queryItems?.append(URLQueryItem(name: "stateCode", value: statesQueryParameterValue))
-        }
-
-        self.urlFactory.add(requestOptions, to: &urlComponents)
-
-        return urlComponents.url
     }
 
     /**
-        fetch alert information
+     fetch alert information
 
-    */
+     */
     public func fetchAlerts(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], NationalParkServiceApiError> {
 
-        guard let validUrl = self.alertsUrl(by: parkCodes, in: states, requestOptions) else {
+        guard let validUrl = self.url(.alerts, by: parkCodes, in: states, requestOptions) else {
             return Fail(error: NationalParkServiceApiError.invalidInput).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap({ (result) -> [Alert] in
-                let parks = try JSONDecoder().decode(Alerts.self, from: self.jsonData(from: result))
-                return parks.data
-            })
-            .mapError { _ in
-                // if it's our kind of error already, we can return it directly
-                return NationalParkServiceApiError.invalidServerResponse
-            }
+            .map { $0.data }
+            .decode(type: Alerts.self, decoder: JSONDecoder())
+            .map { $0.data }
+            .mapError(self.errorTransformer)
             .eraseToAnyPublisher()
     }
 
-    private func jsonData(from result: URLSession.DataTaskPublisher.Output) throws -> Data {
-        guard let jsonString = String(data: result.data, encoding: .utf8) else {
-            throw NationalParkServiceApiError.invalidServerResponse
+    /**
+     fetch news release information
+
+     */
+    public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], NationalParkServiceApiError> {
+
+        guard let validUrl = self.url(.newsRelease, by: parkCodes, in: states, requestOptions) else {
+            return Fail(error: NationalParkServiceApiError.invalidInput).eraseToAnyPublisher()
         }
-        guard let jsonData = jsonString.data(using: .utf8) else {
-            throw NationalParkServiceApiError.invalidServerResponse
-        }
-        return jsonData
+
+        return URLSession.shared.dataTaskPublisher(for: validUrl)
+            .map { $0.data }
+            .decode(type: NewsReleases.self, decoder: JSONDecoder())
+            .map { $0.data }
+            .mapError(self.errorTransformer)
+            .eraseToAnyPublisher()
     }
 
-    private func alertsUrl(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableAlertField>?) -> URL? {
+    // MARK: private functions
+    private func url<T: RequestableField>(_ endpoint: NationalParkServiceApiEndpoint, by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<T>?) -> URL? {
 
-        var urlComponents = self.urlFactory.apiUrlComponents(for: "/alerts", authorizedBy: self.apiKey)
+        var urlComponents = self.urlFactory.apiUrlComponents(for: endpoint.rawValue, authorizedBy: self.apiKey)
 
         let parkCodeQueryParameterValue = parkCodes?.joined(separator: ",")
         if parkCodeQueryParameterValue != nil {

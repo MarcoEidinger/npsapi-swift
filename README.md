@@ -20,14 +20,15 @@ If you encounter any problem or have a question on adding package to an Xcode pr
 Example to fetch park related information
 
 ```swift
-        let cancellablePipeline = api.fetchParks()
-            .sink(receiveCompletion: { (error) in
-                print("Park request failed: \(String(describing: error))")
-            }, receiveValue: { (parks) in
-                parks.forEach {
-                    print("Park \($0.parkCode) is a \($0.designation)")
-                }
-            })
+let cancellablePipeline = api.fetchParks()
+    .sink(receiveCompletion: { (error) in
+        print("Park request failed: \(String(describing: error))")
+    }, receiveValue: { (parks) in
+        parks.forEach {
+            print("Park \($0.parkCode) is a \($0.designation)")
+        }
+    }
+)
 ```
 
 Complete client-side API documentation is available [here](https://marcoeidinger.github.io/npsapi-swift/)
@@ -36,3 +37,4 @@ Complete client-side API documentation is available [here](https://marcoeidinger
 
 * Parks
 * Alerts
+* NewsReleases
