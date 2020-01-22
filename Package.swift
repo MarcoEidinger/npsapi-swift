@@ -6,6 +6,7 @@ import PackageDescription
 let package = Package(
     name: "npsapi-swift",
 	platforms: [
+		.macOS(.v10_15),
 		.iOS(.v13)
 	],
     products: [
