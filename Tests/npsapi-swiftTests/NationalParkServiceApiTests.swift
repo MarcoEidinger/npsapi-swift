@@ -21,6 +21,25 @@ final class NationalParkServiceApiTests: XCTestCase {
         self.api = NationalParkServiceApi(apiKey: testKey)
     }
 
+    func testErrorHandlingInvalidApiKey() {
+        self.api = NationalParkServiceApi(apiKey: "InvalidKey")
+        let expectation = XCTestExpectation(description: "Download Parks")
+        let publisher = api.fetchParks(by: ["acad"])
+        let subscription = publisher.sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                XCTFail("subscription finished unexpectedly")
+            case .failure(let error):
+                XCTAssertNotNil(error, "We should have an error object")
+                expectation.fulfill()
+            }
+        }) { (parks) in
+            XCTFail("We recevied data unexpectedly")
+        }
+        XCTAssertNotNil(subscription)
+        wait(for: [expectation], timeout: 45.0)
+    }
+
     func testFetchParksByParkCode() {
         let expectation = XCTestExpectation(description: "Download Parks")
         let publisher = api.fetchParks(by: ["acad"])
@@ -40,6 +59,9 @@ final class NationalParkServiceApiTests: XCTestCase {
             }
             XCTAssertTrue(firstState == .maine, "We have a state")
             XCTAssertNotNil(parks.first?.url, "Park has to have url")
+            XCTAssertNotNil(parks.first?.gpsLocation, "Park has to have gps coordinates")
+            XCTAssertNil(parks.first?.entranceFees, "We should not have receive a non default field without requesting it")
+            XCTAssertNil(parks.first?.entrancePasses, "We should not have receive a non default field without requesting it")
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
@@ -70,7 +92,7 @@ final class NationalParkServiceApiTests: XCTestCase {
 
     func testFetchParksWithRequestOption() {
         let expectation = XCTestExpectation(description: "Download Parks")
-        let publisher = api.fetchParks(by: nil, in: [.californa], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.designation]))
+        let publisher = api.fetchParks(by: nil, in: [.californa], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses]))
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
@@ -81,6 +103,10 @@ final class NationalParkServiceApiTests: XCTestCase {
             }
         }) { (parks) in
             XCTAssertTrue(parks.count == 1, "We have parks")
+            XCTAssertNotNil(parks.first?.images, "We should have images")
+            XCTAssertNotNil(parks.first?.images?.first?.url, "We should have image url")
+            XCTAssertNotNil(parks.first?.entranceFees, "We should not have receive a non default field without requesting it")
+            XCTAssertNotNil(parks.first?.entrancePasses, "We should not have receive a non default field without requesting it")
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
@@ -129,6 +155,7 @@ final class NationalParkServiceApiTests: XCTestCase {
     }
 
     static var allTests = [
+        ("testErrorHandlingInvalidApiKey", testErrorHandlingInvalidApiKey),
         ("testFetchParksByParkCode", testFetchParksByParkCode),
         ("testFetchParksByState", testFetchParksByState),
         ("testFetchParksWithRequestOption", testFetchParksWithRequestOption),

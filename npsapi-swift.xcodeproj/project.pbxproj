@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		8A61E54923D75AFB0052181F /* NewsRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E54823D75AFB0052181F /* NewsRelease.swift */; };
 		8A61E54E23D7BFB90052181F /* NpsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E54D23D7BFB90052181F /* NpsImage.swift */; };
+		8A61E55123D81A5A0052181F /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E55023D81A5A0052181F /* Internal.swift */; };
+		8A61E55323D8ACD30052181F /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E55223D8ACD30052181F /* Fee.swift */; };
 		8ADC098123D28F720032B68B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC097F23D28F720032B68B /* State.swift */; };
 		8ADC098223D28F720032B68B /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098023D28F720032B68B /* Park.swift */; };
 		8ADC098623D2D35D0032B68B /* RequestOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC098523D2D35D0032B68B /* RequestOption.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		8A61E54823D75AFB0052181F /* NewsRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRelease.swift; sourceTree = "<group>"; };
 		8A61E54D23D7BFB90052181F /* NpsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpsImage.swift; sourceTree = "<group>"; };
+		8A61E55023D81A5A0052181F /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
+		8A61E55223D8ACD30052181F /* Fee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
 		8ADC097F23D28F720032B68B /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		8ADC098023D28F720032B68B /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		8ADC098523D2D35D0032B68B /* RequestOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOption.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A61E54F23D81A450052181F /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				8A61E55023D81A5A0052181F /* Internal.swift */,
+				8ADC098923D356C20032B68B /* RequestUrlFactory.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		8ADC097E23D28F3D0032B68B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 				8ADC099023D37F960032B68B /* RequestableField.swift */,
 				8A61E54823D75AFB0052181F /* NewsRelease.swift */,
 				8A61E54D23D7BFB90052181F /* NpsImage.swift */,
+				8A61E55223D8ACD30052181F /* Fee.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,10 +171,10 @@
 		OBJ_8 /* npsapi-swift */ = {
 			isa = PBXGroup;
 			children = (
+				8A61E54F23D81A450052181F /* Internal */,
 				8ADC097E23D28F3D0032B68B /* Model */,
 				OBJ_9 /* NationalParkServiceApi.swift */,
 				8ADC098723D347C20032B68B /* NationalParkServiceApiError.swift */,
-				8ADC098923D356C20032B68B /* RequestUrlFactory.swift */,
 			);
 			name = "npsapi-swift";
 			path = "Sources/npsapi-swift";
@@ -275,10 +289,12 @@
 				8ADC098823D347C20032B68B /* NationalParkServiceApiError.swift in Sources */,
 				OBJ_24 /* NationalParkServiceApi.swift in Sources */,
 				8A61E54923D75AFB0052181F /* NewsRelease.swift in Sources */,
+				8A61E55323D8ACD30052181F /* Fee.swift in Sources */,
 				8ADC098223D28F720032B68B /* Park.swift in Sources */,
 				8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */,
 				8A61E54E23D7BFB90052181F /* NpsImage.swift in Sources */,
 				8ADC098123D28F720032B68B /* State.swift in Sources */,
+				8A61E55123D81A5A0052181F /* Internal.swift in Sources */,
 				8ADC098F23D37B990032B68B /* Alert.swift in Sources */,
 				8ADC099123D37F960032B68B /* RequestableField.swift in Sources */,
 			);

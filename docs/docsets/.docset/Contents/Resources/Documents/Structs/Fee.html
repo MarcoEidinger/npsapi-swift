@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NationalParkServiceApiError Enumeration Reference</title>
+    <title>Fee Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/NationalParkServiceApiError" class="dashAnchor"></a>
-    <a title="NationalParkServiceApiError Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Struct/Fee" class="dashAnchor"></a>
+    <a title="Fee Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (98% documented)</p>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        NationalParkServiceApiError Enumeration Reference
+        Fee Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -93,14 +93,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NationalParkServiceApiError</h1>
+            <h1>Fee</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NationalParkServiceApiError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Fee</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                 </div>
               </div>
-            <p>Errors either related to the client or server side implementation of the National Park Service Api</p>
+            <p>Fee information, e.g park entrance fee or par entrance pass fee</p>
 
           </section>
           <section class="section task-group-section">
@@ -109,9 +109,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12npsapi_swift27NationalParkServiceApiErrorO07invalidF3KeyyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/invalidApiKey" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12npsapi_swift27NationalParkServiceApiErrorO07invalidF3KeyyA2CmF">invalidApiKey</a>
+                    <a name="/s:12npsapi_swift3FeeV4costSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12npsapi_swift3FeeV4costSSSgvp">cost</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -119,19 +119,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Invalid API Key (HTTP 403 - Forbidden)</p>
+                        <p>Fee amount in US Dollar</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidApiKey</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cost</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/NationalParkServiceApiError.swift#L13">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/Model/Fee.swift#L13">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -139,9 +139,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12npsapi_swift27NationalParkServiceApiErrorO6badURLyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/badURL" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12npsapi_swift27NationalParkServiceApiErrorO6badURLyA2CmF">badURL</a>
+                    <a name="/s:12npsapi_swift3FeeV11descriptionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12npsapi_swift3FeeV11descriptionSSSgvp">description</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -149,19 +149,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A malformed URL prevented a URL request from being initiated (Client API issue)</p>
+                        <p>Description of what the fee includes</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">badURL</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/NationalParkServiceApiError.swift#L15">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/Model/Fee.swift#L15">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -169,9 +169,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12npsapi_swift27NationalParkServiceApiErrorO19cannotDecodeContentyACs0G0_p_tcACmF"></a>
-                    <a name="//apple_ref/swift/Element/cannotDecodeContent(error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12npsapi_swift27NationalParkServiceApiErrorO19cannotDecodeContentyACs0G0_p_tcACmF">cannotDecodeContent(error:)</a>
+                    <a name="/s:12npsapi_swift3FeeV5titleSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/title" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12npsapi_swift3FeeV5titleSSSgvp">title</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -179,19 +179,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Invalid Server Response</p>
+                        <p>Title of Fee</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">cannotDecodeContent</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/NationalParkServiceApiError.swift#L17">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/npsapi-swift/Model/Fee.swift#L17">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

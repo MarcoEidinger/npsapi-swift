@@ -10,9 +10,11 @@ import Foundation
 /// Image information provided by National Park Service
 public struct NpsImage: Decodable {
     enum CodingKeys: String, CodingKey {
-        case title, description, caption, altText, credit, url
+        case id, title, description, caption, altText, credit, url
     }
 
+    /// Unique identifier for the news release
+    public let id: String?
     /// Image Title
     public let title: String?
     /// Image Title
@@ -30,6 +32,7 @@ public struct NpsImage: Decodable {
 extension NpsImage {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(String.self, forKey: .id)
         title = try values.decodeIfPresent(String.self, forKey: .title)
         description = try values.decodeIfPresent(String.self, forKey: .description)
         caption = try values.decode(String.self, forKey: .caption)

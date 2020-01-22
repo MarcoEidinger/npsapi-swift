@@ -1,6 +1,19 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/Alert.swift",
+      "line": 12,
+      "symbol": "RequestableAlertField.void",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/NewsRelease.swift",
+      "line": 12,
+      "symbol": "RequestableNewsReleaseField.void",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/d041771/git/npsapi-swift"
 }
