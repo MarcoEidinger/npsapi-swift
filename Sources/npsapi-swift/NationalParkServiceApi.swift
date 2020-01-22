@@ -31,7 +31,8 @@ public class NationalParkServiceApi {
         return data
     }
 
-    init(apiKey: String) {
+    /// Initializer
+    public init(apiKey: String) {
         self.apiKey = apiKey
     }
 
