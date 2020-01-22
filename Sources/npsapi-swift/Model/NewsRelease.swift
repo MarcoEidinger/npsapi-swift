@@ -21,12 +21,14 @@ public enum RequestableNewsReleaseField: String, RequestableField {
     case releaseDate = "releasedate"
     /// Link to full news release
     case url
+    /// News release image
+    case image
 }
 
 /// News release data includes a title, abstract, and link to national park news releases, as well as an optional image.
 public struct NewsRelease: Decodable {
     enum CodingKeys: String, CodingKey {
-        case id, parkCode, title, releaseDate = "releasedate", abstract, url
+        case id, parkCode, title, releaseDate = "releasedate", abstract, url, image
     }
 
     /// Unique identifier for the news release
@@ -41,6 +43,8 @@ public struct NewsRelease: Decodable {
     public let releaseDate: Date?
     /// Link to full news release
     public let url: URL?
+    /// News release image
+    public let image: NpsImage?
 }
 
 extension NewsRelease {
@@ -51,8 +55,8 @@ extension NewsRelease {
         title = try values.decode(String.self, forKey: .title)
         abstract = try values.decodeIfPresent(String.self, forKey: .abstract)
         releaseDate = try values.decodeIfPresent(String.self, forKey: .releaseDate)?.toDate()
-
         url = try values.decodeIfPresent(String.self, forKey: .url)?.toURL()
+        image = try values.decodeIfPresent(NpsImage.self, forKey: .image)
     }
 }
 
