@@ -6,33 +6,22 @@
 //
 
 import Foundation
+import CoreLocation
 
 /// Requestable attribute of Park model
 public enum RequestableParkField: String, RequestableField {
-    /// Park identification string
-    case id
-    /// A variable width character code used to identify a specific park
-    case parkCode
-    /// Short park name (no designation)
-    case name
-    /// Full park name (with designation)
-    case FullName
-    /// Introductory paragraph from the park homepage
-    case description
-    /// Type of designation (eg, national park, national monument, national recreation area, etc)
-    case designation
-    /// State(s) the park is located in
-    case states
-    /// General overview of how to get to the park
-    case directionsInfo
-    /// General description of the weather in the park over the course of a year
-    case weatherInfo
+    /// Park images
+    case images
+    /// Fee for entering the park
+    case entranceFees
+    /// Passes available to provide entry into the park
+    case entrancePasses
 }
 
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.
 public struct Park: Decodable {
     enum CodingKeys: CodingKey {
-        case id, parkCode, name, fullName, description, url, designation, states, directionsInfo, directionsUrl, weatherInfo
+        case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses
     }
 
     /// Park identification string
@@ -49,6 +38,8 @@ public struct Park: Decodable {
     public let designation: String?
     /// State(s) the park is located in
     public let states: [State]?
+    /// Park GPS cordinates
+    public let gpsLocation: CLLocation?
     /// General overview of how to get to the park
     public let directionsInfo: String?
     /// Link to page, if available, that provides additional detail on getting to the park
@@ -57,6 +48,12 @@ public struct Park: Decodable {
     public let weatherInfo: String?
     /// Park Website
     public let url: URL?
+    /// Park images
+    public let images: [NpsImage]?
+    /// Fee for entering the park
+    public let entranceFees: [Fee]?
+    /// Passes available to provide entry into the park
+    public let entrancePasses: [Fee]?
 }
 
 extension Park {
@@ -74,16 +71,9 @@ extension Park {
         directionsUrl = try values.decodeIfPresent(String.self, forKey: .directionsUrl)?.toURL()
         weatherInfo = try values.decodeIfPresent(String.self, forKey: .weatherInfo)
         states = try values.decode(String.self, forKey: .states).toStates()
+        gpsLocation = try values.decodeIfPresent(String.self, forKey: .latLong)?.toLocation()
+        images = try values.decodeIfPresent([NpsImage].self, forKey: .images)
+        entranceFees = try values.decodeIfPresent([Fee].self, forKey: .entranceFees)
+        entrancePasses = try values.decodeIfPresent([Fee].self, forKey: .entrancePasses)
     }
-}
-
-extension String {
-    func toURL() -> URL? {
-        return URL(string: self)
-    }
-}
-
-struct Parks: Decodable {
-    let total: String
-    let data: [Park]
 }

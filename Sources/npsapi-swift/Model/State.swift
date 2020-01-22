@@ -79,17 +79,3 @@ public enum State: String, CustomDebugStringConvertible {
         return self.rawValue
     }
 }
-
-extension String {
-    func toStates() -> [State] {
-        var states: [State] = []
-        let statesAsStringArray = self.components(separatedBy: ",")
-        statesAsStringArray.forEach { (potentialState) in
-            guard let state = State(rawValue: potentialState) else {
-                return
-            }
-            states.append(state)
-        }
-        return states
-    }
-}
