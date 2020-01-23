@@ -79,11 +79,11 @@ extension String {
         return Double(String(self[startLong..<endLong]))
     }
 
-    func toStates() -> [State] {
-        var states: [State] = []
+    func toStates() -> [StateInUSA] {
+        var states: [StateInUSA] = []
         let statesAsStringArray = self.components(separatedBy: ",")
         statesAsStringArray.forEach { (potentialState) in
-            guard let state = State(rawValue: potentialState) else {
+            guard let state = StateInUSA(rawValue: potentialState) else {
                 return
             }
             states.append(state)
