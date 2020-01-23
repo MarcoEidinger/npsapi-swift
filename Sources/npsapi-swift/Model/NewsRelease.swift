@@ -13,7 +13,7 @@ public enum RequestableNewsReleaseField: String, RequestableField {
 }
 
 /// News release data includes a title, abstract, and link to national park news releases, as well as an optional image.
-public struct NewsRelease: Decodable {
+public struct NewsRelease: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, parkCode, title, releaseDate = "releasedate", abstract, url, image
     }
