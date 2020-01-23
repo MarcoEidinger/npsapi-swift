@@ -40,28 +40,39 @@ final class NationalParkServiceApiTests: XCTestCase {
         wait(for: [expectation], timeout: 45.0)
     }
 
-    func testFetchParksByParkCode() {
-        let expectation = XCTestExpectation(description: "Download Parks")
-        let publisher = api.fetchParks(by: [ParkCodeConstants.acadia])
-        let subscription = publisher.sink(receiveCompletion: { (completion) in
-            switch completion {
-            case .finished:
+    func testFetchParkWithNoResult() {
+        let expectation = XCTestExpectation(description: "Will not find park")
+        let publisher = api.fetchPark("DOES_NOT_EXIST")
+        let subscription = publisher
+            .replaceError(with: nil)
+            .sink { (park) in
+                XCTAssertNil(park, "No park should have been found for that key")
                 expectation.fulfill()
-            case .failure(let error):
-                print(error)
-                XCTFail("subscription returned error unexpectedly")
-            }
-        }) { (parks) in
-            XCTAssertTrue(parks.count > 0, "We have parks")
-            guard let firstState = parks.first?.states!.first else {
-                XCTFail("No state")
-                return
-            }
-            XCTAssertTrue(firstState == .maine, "We have a state")
-            XCTAssertNotNil(parks.first?.url, "Park has to have url")
-            XCTAssertNotNil(parks.first?.gpsLocation, "Park has to have gps coordinates")
-            XCTAssertNil(parks.first?.entranceFees, "We should not have receive a non default field without requesting it")
-            XCTAssertNil(parks.first?.entrancePasses, "We should not have receive a non default field without requesting it")
+        }
+        XCTAssertNotNil(subscription)
+        wait(for: [expectation], timeout: 45.0)
+    }
+
+    func testFetchParkByParkCode() {
+        let expectation = XCTestExpectation(description: "Download specific park")
+        let publisher = api.fetchPark(ParkCodeConstants.acadia)
+        let subscription = publisher
+            .replaceError(with: nil)
+            .sink { (park) in
+                guard let park = park else {
+                    XCTFail("No park information found")
+                    return
+                }
+                guard let firstState = park.states?.first else {
+                    XCTFail("No state")
+                    return
+                }
+                XCTAssertTrue(firstState == .maine, "We have a state")
+                XCTAssertNotNil(park.url, "Park has to have url")
+                XCTAssertNotNil(park.gpsLocation, "Park has to have gps coordinates")
+                XCTAssertNil(park.entranceFees, "We should not have receive a non default field without requesting it")
+                XCTAssertNil(park.entrancePasses, "We should not have receive a non default field without requesting it")
+                expectation.fulfill()
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
@@ -114,7 +125,7 @@ final class NationalParkServiceApiTests: XCTestCase {
     }
 
     func testFetchAlertsByParkCode() {
-        let expectation = XCTestExpectation(description: "Download Parks")
+        let expectation = XCTestExpectation(description: "Download Alerts")
         let publisher = api.fetchAlerts(by: [ParkCodeConstants.acadia])
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
@@ -132,7 +143,7 @@ final class NationalParkServiceApiTests: XCTestCase {
     }
 
     func testFetchNewsReleaseByParkCode() {
-        let expectation = XCTestExpectation(description: "Download Parks")
+        let expectation = XCTestExpectation(description: "Download NewsReleases")
         let publisher = api.fetchNewsReleases()
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
@@ -156,7 +167,7 @@ final class NationalParkServiceApiTests: XCTestCase {
     }
 
     func testFetchVisitorCentersByParkCode() {
-        let expectation = XCTestExpectation(description: "Download Parks")
+        let expectation = XCTestExpectation(description: "Download Visitor Centers")
         let publisher = api.fetchVisitorCenters(by: [ParkCodeConstants.yellowstone], in: nil, nil)
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
