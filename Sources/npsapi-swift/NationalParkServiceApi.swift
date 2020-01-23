@@ -5,6 +5,7 @@ private enum NationalParkServiceApiEndpoint: String {
     case parks = "/parks"
     case alerts = "/alerts"
     case newsRelease = "/newsreleases"
+    case visitorCenters = "/visitorcenters"
 }
 
 /// Main API class to interact with the National Park Service API
@@ -39,9 +40,13 @@ public class NationalParkServiceApi {
     // MARK: public functions
 
     /**
-     fetch park information
+        fetch park information from the National Park Service Data API
 
-     */
+        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+        - Returns: a respective publisher
+    */
     public func fetchParks(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.parks, by: parkCodes, in: states, requestOptions) else {
@@ -57,9 +62,13 @@ public class NationalParkServiceApi {
     }
 
     /**
-     fetch alert information
+        fetch alert release information from the National Park Service Data API
 
-     */
+        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+        - Returns: a respective publisher
+    */
     public func fetchAlerts(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.alerts, by: parkCodes, in: states, requestOptions) else {
@@ -75,9 +84,13 @@ public class NationalParkServiceApi {
     }
 
     /**
-     fetch news release information
+        fetch news release information from the National Park Service Data API
 
-     */
+        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+        - Returns: a respective publisher
+    */
     public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.newsRelease, by: parkCodes, in: states, requestOptions) else {
@@ -87,6 +100,28 @@ public class NationalParkServiceApi {
         return URLSession.shared.dataTaskPublisher(for: validUrl)
             .tryMap(responseTransformer)
             .decode(type: NewsReleases.self, decoder: JSONDecoder())
+            .map { $0.data }
+            .mapError(self.errorTransformer)
+            .eraseToAnyPublisher()
+    }
+
+    /**
+        fetch visitor center information from the National Park Service Data API
+
+        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+        - Returns: a respective publisher
+    */
+    public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<[VisitorCenter], NationalParkServiceApiError> {
+
+        guard let validUrl = self.url(.visitorCenters, by: parkCodes, in: states, requestOptions) else {
+            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+        }
+
+        return URLSession.shared.dataTaskPublisher(for: validUrl)
+            .tryMap(responseTransformer)
+            .decode(type: VisitorCenters.self, decoder: JSONDecoder())
             .map { $0.data }
             .mapError(self.errorTransformer)
             .eraseToAnyPublisher()

@@ -23,6 +23,11 @@ struct NewsReleases: Decodable {
     let data: [NewsRelease]
 }
 
+struct VisitorCenters: Decodable {
+    let total: String
+    let data: [VisitorCenter]
+}
+
 extension String {
     func toURL() -> URL? {
         return URL(string: self)
@@ -40,30 +45,37 @@ extension String {
     }
 
     func toLocation() -> CLLocation? {
-        guard let lat = self.toLantitude(),
-            let long = self.toLongtitude() else {
+        guard let lat = self.toLatitude(),
+            let long = self.toLongitude() else {
                 return nil
         }
         return CLLocation(latitude: lat, longitude: long)
     }
 
-    func toLantitude() -> Double? {
-        guard let meep = self.firstIndex(of: ":") else {
+    func toLatitude() -> Double? {
+        guard let latitudeSeparator = self.firstIndex(of: ":") else {
             return nil
         }
-        let startLat = self.index(meep, offsetBy: +1)
+        let startLat = self.index(latitudeSeparator, offsetBy: +1)
         guard let endLat = self.firstIndex(of: ",") else {
             return nil
         }
         return Double(String(self[startLat..<endLat]))
     }
 
-    func toLongtitude() -> Double? {
-        guard let doo = self.firstIndex(of: ",") else {
+    func toLongitude() -> Double? {
+        guard let longitudeSeparator = self.firstIndex(of: ",") else {
             return nil
         }
-        let startLong = self.index(doo, offsetBy: +7)
-        let endLong = self.endIndex
+        // default format "lat:44.59824417, long:-110.5471695"
+        var endLong = self.endIndex
+        var distance = +7
+        // fallback format "{lat:63.7308262, lng:-148.9171829}"
+        if self.contains("lng") {
+            distance = +6
+            endLong = self.index(self.endIndex, offsetBy: -1)
+        }
+        let startLong = self.index(longitudeSeparator, offsetBy: distance)
         return Double(String(self[startLong..<endLong]))
     }
 
