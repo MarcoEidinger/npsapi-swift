@@ -13,6 +13,13 @@
       "symbol": "RequestableNewsReleaseField.void",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/VisitorCenter.swift",
+      "line": 13,
+      "symbol": "RequestableVisitorCenterField.void",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/d041771/git/npsapi-swift"

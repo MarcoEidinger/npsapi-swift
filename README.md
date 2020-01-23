@@ -57,3 +57,4 @@ Complete client-side API documentation is available [here](https://marcoeidinger
 * Parks
 * Alerts
 * NewsReleases
+* VisitorCenters

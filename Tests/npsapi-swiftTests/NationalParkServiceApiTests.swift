@@ -154,12 +154,37 @@ final class NationalParkServiceApiTests: XCTestCase {
         wait(for: [expectation], timeout: 45.0)
     }
 
+    func testFetchVisitorCentersByParkCode() {
+        let expectation = XCTestExpectation(description: "Download Parks")
+        let publisher = api.fetchVisitorCenters(by: ["yell"], in: nil, nil)
+        let subscription = publisher.sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                expectation.fulfill()
+            case .failure(let error):
+                print(error)
+                XCTFail("subscription returned error unexpectedly")
+            }
+        }) { (visitorCenters) in
+            XCTAssertTrue(visitorCenters.count > 0, "We have visitor centers")
+            XCTAssertNotNil(visitorCenters.first?.id)
+            XCTAssertNotNil(visitorCenters.first?.name)
+            XCTAssertNotNil(visitorCenters.first?.description)
+            XCTAssertNotNil(visitorCenters.first?.parkCode)
+            XCTAssertNotNil(visitorCenters.first?.directionsInfo)
+            XCTAssertNotNil(visitorCenters.first?.gpsLocation)
+        }
+        XCTAssertNotNil(subscription)
+        wait(for: [expectation], timeout: 45.0)
+    }
+
     static var allTests = [
         ("testErrorHandlingInvalidApiKey", testErrorHandlingInvalidApiKey),
         ("testFetchParksByParkCode", testFetchParksByParkCode),
         ("testFetchParksByState", testFetchParksByState),
         ("testFetchParksWithRequestOption", testFetchParksWithRequestOption),
         ("testFetchAlertsByParkCode", testFetchAlertsByParkCode),
-        ("testFetchNewsReleaseByParkCode", testFetchNewsReleaseByParkCode)
+        ("testFetchNewsReleaseByParkCode", testFetchNewsReleaseByParkCode),
+        ("testFetchVisitorCentersByParkCode", testFetchVisitorCentersByParkCode)
     ]
 }
