@@ -9,9 +9,10 @@ extension NationalParkServiceApiTests {
         ("testErrorHandlingInvalidApiKey", testErrorHandlingInvalidApiKey),
         ("testFetchAlertsByParkCode", testFetchAlertsByParkCode),
         ("testFetchNewsReleaseByParkCode", testFetchNewsReleaseByParkCode),
-        ("testFetchParksByParkCode", testFetchParksByParkCode),
+        ("testFetchParkByParkCode", testFetchParkByParkCode),
         ("testFetchParksByState", testFetchParksByState),
         ("testFetchParksWithRequestOption", testFetchParksWithRequestOption),
+        ("testFetchParkWithNoResult", testFetchParkWithNoResult),
         ("testFetchVisitorCentersByParkCode", testFetchVisitorCentersByParkCode),
     ]
 }

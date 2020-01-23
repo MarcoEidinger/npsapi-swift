@@ -40,6 +40,19 @@ public class NationalParkServiceApi {
     // MARK: public functions
 
     /**
+        fetch single park information from the National Park Service Data API
+
+        - Parameter parkCode: The National Park Service uses four letter codes - Alpha Codes - to abbreviate the names of its parks. If a park has one name in its title, like Yosemite National Park, the code word would be the first four letters of the name - YOSE. If the park has two names or more in its title, like Grand Canyon National Park, the code word would be the first two letters of each name - GRCA.
+
+        - Returns: a respective publisher
+    */
+    public func fetchPark(_ parkCode: String) -> AnyPublisher<Park?, NationalParkServiceApiError> {
+        return self.fetchParks(by: [parkCode], in: nil, nil)
+            .map { $0.first }
+            .eraseToAnyPublisher()
+    }
+
+    /**
         fetch park information from the National Park Service Data API
 
         - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
