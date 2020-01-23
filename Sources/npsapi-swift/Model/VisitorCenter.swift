@@ -14,7 +14,7 @@ public enum RequestableVisitorCenterField: String, RequestableField {
 }
 
 /// Visitor center data includes location, contact, and operating hours information for visitor centers and other visitor contact facilities in national parks At least one visitor center is listed for each park; some parks with multiple visitor centers may include information about more than one
-public struct VisitorCenter: Decodable {
+public struct VisitorCenter: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, parkCode, name, description, directionsInfo, directionsUrl, latLong
     }
