@@ -8,7 +8,7 @@
 import Foundation
 
 /// Constituent political entity in the United States
-public enum State: String, CustomDebugStringConvertible {
+public enum StateInUSA: String, CaseIterable {
     /// Alabama
     case alabama = "AL"
     /// Alaska
@@ -18,7 +18,7 @@ public enum State: String, CustomDebugStringConvertible {
     /// Arkansas
     case arkansas = "AR"
     /// California
-    case californa = "CA"
+    case california = "CA"
     /// Colorado
     case colorado = "CO"
     /// Connecticut
@@ -73,9 +73,52 @@ public enum State: String, CustomDebugStringConvertible {
     case newmexico = "NM"
     /// New York
     case newyork = "NY"
+    /// North Carolina
+    case northCarolina = "NC"
+    /// North Dakota
+    case northDakota = "ND"
+    /// Ohio
+    case ohio = "OH"
+    /// Oklahoma
+    case oklahoma = "OK"
+    /// Oregon
+    case oregon = "OR"
+    //// Pennsylvania
+    case pennsylvania = "PA"
+    /// Rhode Island
+    case rhodeIsland = "RI"
+    /// South Carolina
+    case southCarolina = "SC"
+    //// South Dakota
+    case southDakota = "SD"
+    /// Tennessee
+    case tennessee = "TN"
+    /// Texas
+    case texax = "TX"
+    /// Utah
+    case utah = "UT"
+    /// Vermont
+    case vermont = "VT"
+    /// Virginia
+    case virgina = "VA"
+    /// Washington
+    case washington = "WA"
+    /// West Virginia
+    case westVirginia = "WV"
+    /// Wisconsin
+    case wisconsin = "WI"
+    /// Wyoming
+    case wyoming = "WY"
 
-    /// Returns 2 character state code, e.g. CA for california
-    public var debugDescription: String {
+    /// Returns name of the state, e.g. "California" for .california
+    public var name: String {
+        let caseName = String(describing: self)
+        let capitlizedCaseName = caseName.prefix(1).capitalized + caseName.dropFirst()
+        return capitlizedCaseName
+    }
+
+    /// Returns 2 character state code, e.g. "CA" for .california
+    public var postalAbbreviation: String {
         return self.rawValue
     }
 }

@@ -69,7 +69,7 @@ final class NationalParkServiceApiTests: XCTestCase {
 
     func testFetchParksByState() {
         let expectation = XCTestExpectation(description: "Download Parks")
-        let publisher = api.fetchParks(by: nil, in: [.californa], nil)
+        let publisher = api.fetchParks(by: nil, in: [.california], nil)
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
@@ -84,7 +84,7 @@ final class NationalParkServiceApiTests: XCTestCase {
                 XCTFail("No state")
                 return
             }
-            XCTAssertTrue(firstState == .californa, "We have a state")
+            XCTAssertTrue(firstState == .california, "We have a state")
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
@@ -92,7 +92,7 @@ final class NationalParkServiceApiTests: XCTestCase {
 
     func testFetchParksWithRequestOption() {
         let expectation = XCTestExpectation(description: "Download Parks")
-        let publisher = api.fetchParks(by: nil, in: [.californa], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses]))
+        let publisher = api.fetchParks(by: nil, in: [.california], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses]))
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
@@ -177,14 +177,4 @@ final class NationalParkServiceApiTests: XCTestCase {
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
     }
-
-    static var allTests = [
-        ("testErrorHandlingInvalidApiKey", testErrorHandlingInvalidApiKey),
-        ("testFetchParksByParkCode", testFetchParksByParkCode),
-        ("testFetchParksByState", testFetchParksByState),
-        ("testFetchParksWithRequestOption", testFetchParksWithRequestOption),
-        ("testFetchAlertsByParkCode", testFetchAlertsByParkCode),
-        ("testFetchNewsReleaseByParkCode", testFetchNewsReleaseByParkCode),
-        ("testFetchVisitorCentersByParkCode", testFetchVisitorCentersByParkCode)
-    ]
 }

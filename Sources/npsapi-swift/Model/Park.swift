@@ -37,7 +37,7 @@ public struct Park: Decodable {
     /// Type of designation (eg, national park, national monument, national recreation area, etc)
     public let designation: String?
     /// State(s) the park is located in
-    public let states: [State]?
+    public let states: [StateInUSA]?
     /// Park GPS cordinates
     public let gpsLocation: CLLocation?
     /// General overview of how to get to the park

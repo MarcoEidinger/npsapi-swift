@@ -47,7 +47,7 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchParks(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], NationalParkServiceApiError> {
+    public func fetchParks(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.parks, by: parkCodes, in: states, requestOptions) else {
             return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
@@ -69,7 +69,7 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchAlerts(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], NationalParkServiceApiError> {
+    public func fetchAlerts(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.alerts, by: parkCodes, in: states, requestOptions) else {
             return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
@@ -91,7 +91,7 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], NationalParkServiceApiError> {
+    public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.newsRelease, by: parkCodes, in: states, requestOptions) else {
             return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
@@ -113,7 +113,7 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<[VisitorCenter], NationalParkServiceApiError> {
+    public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<[VisitorCenter], NationalParkServiceApiError> {
 
         guard let validUrl = self.url(.visitorCenters, by: parkCodes, in: states, requestOptions) else {
             return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
@@ -128,7 +128,7 @@ public class NationalParkServiceApi {
     }
 
     // MARK: private functions
-    private func url<T: RequestableField>(_ endpoint: NationalParkServiceApiEndpoint, by parkCodes: [String]? = [], in states: [State]? = [], _ requestOptions: RequestOptions<T>?) -> URL? {
+    private func url<T: RequestableField>(_ endpoint: NationalParkServiceApiEndpoint, by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<T>?) -> URL? {
 
         var urlComponents = self.urlFactory.apiUrlComponents(for: endpoint.rawValue, authorizedBy: self.apiKey)
 
@@ -137,7 +137,7 @@ public class NationalParkServiceApi {
             urlComponents.queryItems?.append(URLQueryItem(name: "parkCode", value: parkCodeQueryParameterValue))
         }
 
-        let statesQueryParameterValue = states?.map { $0.debugDescription }.joined(separator: ",")
+        let statesQueryParameterValue = states?.map { $0.rawValue }.joined(separator: ",")
         if statesQueryParameterValue != nil {
             urlComponents.queryItems?.append(URLQueryItem(name: "stateCode", value: statesQueryParameterValue))
         }
