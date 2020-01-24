@@ -24,6 +24,8 @@
 		8A58A0D123D9C8210042F6F1 /* VisitorCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58A0D023D9C8210042F6F1 /* VisitorCenter.swift */; };
 		8A58A0D323D9DD4F0042F6F1 /* StateInUSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58A0D223D9DD4F0042F6F1 /* StateInUSATests.swift */; };
 		8A58A0D823D9FF0A0042F6F1 /* NationalParkServiceApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58A0D623D9FF000042F6F1 /* NationalParkServiceApiTests.swift */; };
+		8A58A0DA23DA67D00042F6F1 /* ParkUnitDesignation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58A0D923DA67D00042F6F1 /* ParkUnitDesignation.swift */; };
+		8A58A0DC23DA67FE0042F6F1 /* ParkCodeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58A0DB23DA67FE0042F6F1 /* ParkCodeConstants.swift */; };
 		8A61E54923D75AFB0052181F /* NewsRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E54823D75AFB0052181F /* NewsRelease.swift */; };
 		8A61E54E23D7BFB90052181F /* NpsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E54D23D7BFB90052181F /* NpsImage.swift */; };
 		8A61E55123D81A5A0052181F /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61E55023D81A5A0052181F /* Internal.swift */; };
@@ -62,6 +64,8 @@
 		8A58A0D023D9C8210042F6F1 /* VisitorCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorCenter.swift; sourceTree = "<group>"; };
 		8A58A0D223D9DD4F0042F6F1 /* StateInUSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateInUSATests.swift; sourceTree = "<group>"; };
 		8A58A0D623D9FF000042F6F1 /* NationalParkServiceApiTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NationalParkServiceApiTests.swift; sourceTree = "<group>"; };
+		8A58A0D923DA67D00042F6F1 /* ParkUnitDesignation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkUnitDesignation.swift; sourceTree = "<group>"; };
+		8A58A0DB23DA67FE0042F6F1 /* ParkCodeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkCodeConstants.swift; sourceTree = "<group>"; };
 		8A61E54823D75AFB0052181F /* NewsRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRelease.swift; sourceTree = "<group>"; };
 		8A61E54D23D7BFB90052181F /* NpsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpsImage.swift; sourceTree = "<group>"; };
 		8A61E55023D81A5A0052181F /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				8A61E54823D75AFB0052181F /* NewsRelease.swift */,
 				8A61E54D23D7BFB90052181F /* NpsImage.swift */,
 				8ADC098023D28F720032B68B /* Park.swift */,
+				8A58A0DB23DA67FE0042F6F1 /* ParkCodeConstants.swift */,
+				8A58A0D923DA67D00042F6F1 /* ParkUnitDesignation.swift */,
 				8ADC099023D37F960032B68B /* RequestableField.swift */,
 				8ADC098523D2D35D0032B68B /* RequestOption.swift */,
 				8ADC097F23D28F720032B68B /* StateInUSA.swift */,
@@ -298,11 +304,13 @@
 				8A58A0D123D9C8210042F6F1 /* VisitorCenter.swift in Sources */,
 				8A61E55323D8ACD30052181F /* Fee.swift in Sources */,
 				8ADC098223D28F720032B68B /* Park.swift in Sources */,
+				8A58A0DA23DA67D00042F6F1 /* ParkUnitDesignation.swift in Sources */,
 				8ADC098A23D356C20032B68B /* RequestUrlFactory.swift in Sources */,
 				8A61E54E23D7BFB90052181F /* NpsImage.swift in Sources */,
 				8ADC098123D28F720032B68B /* StateInUSA.swift in Sources */,
 				8A61E55123D81A5A0052181F /* Internal.swift in Sources */,
 				8ADC098F23D37B990032B68B /* Alert.swift in Sources */,
+				8A58A0DC23DA67FE0042F6F1 /* ParkCodeConstants.swift in Sources */,
 				8ADC099123D37F960032B68B /* RequestableField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
