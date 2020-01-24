@@ -8,40 +8,6 @@
 import Foundation
 import CoreLocation
 
-/// Constants for the most important parks in the National Park system. List is not complete!
-public struct ParkCodeConstants {
-    /// Acadia National Park
-    public static let acadia = "acad"
-    /// Arches National Park
-    public static let arches = "arch"
-    /// Bryce Canyon National Park
-    public static let bryceCanyon = "brca"
-    /// Death Valley National Park
-    public static let deathValley = "deva"
-    /// Denali National Park
-    public static let denali = "dena"
-    /// Everglades National Park
-    public static let everglades = "ever"
-    /// Grand Canyon National Park
-    public static let grandCanyon = "grca"
-    /// Grand Teton National Park
-    public static let grandTeton = "grte"
-    /// Great Smokey Mountains National Park
-    public static let greatSmokeyMountains = "grsm"
-    /// Joshua Tree National Park
-    public static let joshuaTree = "jotr"
-    /// Katmai National Park
-    public static let katmai = "katm"
-    /// Rocky Mountainn National Park
-    public static let rockyMountains = "romo"
-    /// Yellowstone National Park
-    public static let yellowstone = "yell"
-    /// Yosemite National Park
-    public static let yosemite = "yose"
-    /// Zion National Park
-    public static let zion = "zion"
-}
-
 /// Requestable attribute of Park model
 public enum RequestableParkField: String, RequestableField {
     /// Park images
@@ -65,17 +31,17 @@ public struct Park: Decodable {
     /// Short park name (no designation)
     public let name: String
     /// Full park name (with designation)
-    public let fullName: String?
+    public let fullName: String
     /// Introductory paragraph from the park homepage
-    public let description: String?
+    public let description: String
     /// Type of designation (eg, national park, national monument, national recreation area, etc)
-    public let designation: String?
+    public let designation: ParkUnitDesignation
     /// State(s) the park is located in
-    public let states: [StateInUSA]?
+    public let states: [StateInUSA]
     /// Park GPS cordinates
     public let gpsLocation: CLLocation?
     /// General overview of how to get to the park
-    public let directionsInfo: String?
+    public let directionsInfo: String
     /// Link to page, if available, that provides additional detail on getting to the park
     public let directionsUrl: URL?
     /// General description of the weather in the park over the course of a year
@@ -97,11 +63,11 @@ extension Park {
         id = try values.decode(String.self, forKey: .id)
         parkCode = try values.decode(String.self, forKey: .parkCode)
         name = try values.decode(String.self, forKey: .name)
-        fullName = try values.decodeIfPresent(String.self, forKey: .fullName)
-        description = try values.decodeIfPresent(String.self, forKey: .description)
+        fullName = try values.decode(String.self, forKey: .fullName)
+        description = try values.decode(String.self, forKey: .description)
         url = try values.decodeIfPresent(String.self, forKey: .url)?.toURL()
-        designation = try values.decodeIfPresent(String.self, forKey: .designation)
-        directionsInfo = try values.decodeIfPresent(String.self, forKey: .directionsInfo)
+        designation = try ParkUnitDesignation(validDesignationOrUnknown: values.decodeIfPresent(String.self, forKey: .designation))
+        directionsInfo = try values.decode(String.self, forKey: .directionsInfo)
         directionsUrl = try values.decodeIfPresent(String.self, forKey: .directionsUrl)?.toURL()
         weatherInfo = try values.decodeIfPresent(String.self, forKey: .weatherInfo)
         states = try values.decode(String.self, forKey: .states).toStates()

@@ -63,7 +63,7 @@ final class NationalParkServiceApiTests: XCTestCase {
                     XCTFail("No park information found")
                     return
                 }
-                guard let firstState = park.states?.first else {
+                guard let firstState = park.states.first else {
                     XCTFail("No state")
                     return
                 }
@@ -91,7 +91,7 @@ final class NationalParkServiceApiTests: XCTestCase {
             }
         }) { (parks) in
             XCTAssertTrue(parks.count > 0, "We have parks")
-            guard let firstState = parks.first?.states!.first else {
+            guard let firstState = parks.first?.states.first else {
                 XCTFail("No state")
                 return
             }
