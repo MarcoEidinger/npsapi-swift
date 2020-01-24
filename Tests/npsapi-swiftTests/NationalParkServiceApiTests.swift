@@ -189,4 +189,25 @@ final class NationalParkServiceApiTests: XCTestCase {
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
     }
+
+    func testFetchAssetsByParkCode() {
+        let expectation = XCTestExpectation(description: "Download Assets")
+        let publisher = api.fetchAssets(by: [ParkCodeConstants.yellowstone], in: nil, nil)
+        let subscription = publisher.sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                expectation.fulfill()
+            case .failure(let error):
+                print(error)
+                XCTFail("subscription returned error unexpectedly")
+            }
+        }) { (assets) in
+            XCTAssertTrue(assets.count > 0, "We have assets / places")
+            XCTAssertNotNil(assets.first?.id)
+            XCTAssertNotNil(assets.first?.listingImage.url)
+            XCTAssertNotNil(assets.first?.listingImage.altText)
+        }
+        XCTAssertNotNil(subscription)
+        wait(for: [expectation], timeout: 45.0)
+    }
 }

@@ -8,6 +8,7 @@ extension NationalParkServiceApiTests {
     static let __allTests__NationalParkServiceApiTests = [
         ("testErrorHandlingInvalidApiKey", testErrorHandlingInvalidApiKey),
         ("testFetchAlertsByParkCode", testFetchAlertsByParkCode),
+        ("testFetchAssetsByParkCode", testFetchAssetsByParkCode),
         ("testFetchNewsReleaseByParkCode", testFetchNewsReleaseByParkCode),
         ("testFetchParkByParkCode", testFetchParkByParkCode),
         ("testFetchParksByState", testFetchParksByState),

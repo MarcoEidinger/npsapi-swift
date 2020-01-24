@@ -8,6 +8,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/Asset.swift",
+      "line": 12,
+      "symbol": "RequestableAssetField.void",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/NewsRelease.swift",
       "line": 12,
       "symbol": "RequestableNewsReleaseField.void",

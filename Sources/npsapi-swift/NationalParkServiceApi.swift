@@ -6,6 +6,7 @@ private enum NationalParkServiceApiEndpoint: String {
     case alerts = "/alerts"
     case newsRelease = "/newsreleases"
     case visitorCenters = "/visitorcenters"
+    case assets = "/places"
 }
 
 /// Main API class to interact with the National Park Service API
@@ -135,6 +136,28 @@ public class NationalParkServiceApi {
         return URLSession.shared.dataTaskPublisher(for: validUrl)
             .tryMap(responseTransformer)
             .decode(type: VisitorCenters.self, decoder: JSONDecoder())
+            .map { $0.data }
+            .mapError(self.errorTransformer)
+            .eraseToAnyPublisher()
+    }
+
+    /**
+        fetch asset (place) information from the National Park Service Data API
+
+        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+        - Returns: a respective publisher
+    */
+    public func fetchAssets(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAssetField>? = nil) -> AnyPublisher<[Asset], NationalParkServiceApiError> {
+
+        guard let validUrl = self.url(.assets, by: parkCodes, in: states, requestOptions) else {
+            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+        }
+
+        return URLSession.shared.dataTaskPublisher(for: validUrl)
+            .tryMap(responseTransformer)
+            .decode(type: Assets.self, decoder: JSONDecoder())
             .map { $0.data }
             .mapError(self.errorTransformer)
             .eraseToAnyPublisher()
