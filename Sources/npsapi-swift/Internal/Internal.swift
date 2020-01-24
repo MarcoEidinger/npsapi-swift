@@ -28,6 +28,11 @@ struct VisitorCenters: Decodable {
     let data: [VisitorCenter]
 }
 
+struct Assets: Decodable {
+    let total: String
+    let data: [Asset]
+}
+
 extension String {
     func toURL() -> URL? {
         return URL(string: self)

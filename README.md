@@ -33,21 +33,60 @@ github "MarcoEidinger/npsapi-swift" "master"
 
 ## Usage
 
-Example to fetch park related information
+Example to fetch information for a single park
 
 ```swift
 import npsapi_swift
 
 let api = NationalParkServiceApi(apiKey: "your-secret-API-key")
 let cancellablePipeline = api.fetchParks()
-    .sink(receiveCompletion: { (error) in
-        print("Park request failed: \(String(describing: error))")
+	.replaceError(with: nil)
+    .sink { (park) in
+		guard let park = park else { return }
+		print("Park \(park.parkCode) is a \(park.designation)")
+    }
+```
+
+Parks and other entities of the National Park Service Data API can be fetched in bulks.
+
+```swift
+import npsapi_swift
+
+let api = NationalParkServiceApi(apiKey: "your-secret-API-key")
+let cancellablePipeline = api.fetchParks()
+    .sink(receiveCompletion: { _ in
+        print("Park request completed (either failed or was successful)")
     }, receiveValue: { (parks) in
         parks.forEach {
             print("Park \($0.parkCode) is a \($0.designation)")
         }
     }
 )
+```
+
+As default the result set is limited to 50 records. This can be decreased or increased by setting **limit** in [`RequestOptions`](https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html)
+
+Below is a more complex search
+
+```swift
+import npsapi_swift
+
+let api = NationalParkServiceApi(apiKey: "your-secret-API-key")
+let publisher = api.fetchParks(by: nil, in: [.california], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses]))
+
+let subscription = publisher
+    .sink(receiveCompletion:
+        { (completion) in
+            switch completion {
+            case .finished:
+                print("Finished successfully")
+            case .failure(let error):
+                print(error)
+            }
+    }
+    ) { (parks) in
+        print(parks.count) // 1
+}
 ```
 
 Complete client-side API documentation is available [here](https://marcoeidinger.github.io/npsapi-swift/)
@@ -58,3 +97,4 @@ Complete client-side API documentation is available [here](https://marcoeidinger
 * Alerts
 * NewsReleases
 * VisitorCenters
+* Places (a.k.a Assets)
