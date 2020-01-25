@@ -8,7 +8,7 @@
 import Foundation
 
 /// Designation of a unit belonging to the National Park Service
-public enum ParkUnitDesignation: String {
+public enum ParkUnitDesignation: String, CaseIterable {
     /// National Park
     case nationalPark = "National Park"
     /// National Monument

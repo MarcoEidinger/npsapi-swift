@@ -1,4 +1,4 @@
-# npsapi-swift
+# NatParkSwiftKit
 
 [![Swift Package Manager Compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -36,9 +36,9 @@ github "MarcoEidinger/npsapi-swift" "master"
 Example to fetch information for a single park
 
 ```swift
-import npsapi_swift
+import NatParkSwiftKit
 
-let api = NationalParkServiceApi(apiKey: "your-secret-API-key")
+let api = DataService(apiKey: "your-secret-API-key")
 let cancellablePipeline = api.fetchParks()
 	.replaceError(with: nil)
     .sink { (park) in
@@ -50,9 +50,9 @@ let cancellablePipeline = api.fetchParks()
 Parks and other entities of the National Park Service Data API can be fetched in bulks.
 
 ```swift
-import npsapi_swift
+import NatParkSwiftKit
 
-let api = NationalParkServiceApi(apiKey: "your-secret-API-key")
+let api = DataService(apiKey: "your-secret-API-key")
 let cancellablePipeline = api.fetchParks()
     .sink(receiveCompletion: { _ in
         print("Park request completed (either failed or was successful)")
@@ -69,9 +69,9 @@ As default the result set is limited to 50 records. This can be decreased or inc
 Below is a more complex search
 
 ```swift
-import npsapi_swift
+import NatParkSwiftKit
 
-let api = NationalParkServiceApi(apiKey: "your-secret-API-key")
+let api = DataService(apiKey: "your-secret-API-key")
 let publisher = api.fetchParks(by: nil, in: [.california], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses]))
 
 let subscription = publisher

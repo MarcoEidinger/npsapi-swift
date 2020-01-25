@@ -1,9 +1,9 @@
 import XCTest
-@testable import npsapi_swift
+@testable import NatParkSwiftKit
 
-final class NationalParkServiceApiTests: XCTestCase {
+final class DataServiceTests: XCTestCase {
 
-    private var api: NationalParkServiceApi! = nil
+    private var api: DataService! = nil
 
     override func setUp() {
         super.setUp()
@@ -18,11 +18,11 @@ final class NationalParkServiceApiTests: XCTestCase {
             return
         }
 
-        self.api = NationalParkServiceApi(apiKey: testKey)
+        self.api = DataService(apiKey: testKey)
     }
 
     func testErrorHandlingInvalidApiKey() {
-        self.api = NationalParkServiceApi(apiKey: "InvalidKey")
+        self.api = DataService(apiKey: "InvalidKey")
         let expectation = XCTestExpectation(description: "Download Parks")
         let publisher = api.fetchParks(by: [ParkCodeConstants.acadia])
         let subscription = publisher.sink(receiveCompletion: { (completion) in

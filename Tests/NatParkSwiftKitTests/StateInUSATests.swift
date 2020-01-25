@@ -1,12 +1,12 @@
 //
-//  USStateTests.swift
-//  npsapi-swiftTests
+//  StateInUSATests.swift
+//  NatParkSwiftKitTests
 //
 //  Created by Eidinger, Marco on 1/23/20.
 //
 
 import XCTest
-import npsapi_swift
+import NatParkSwiftKit
 
 class StateInUSATests: XCTestCase {
 
