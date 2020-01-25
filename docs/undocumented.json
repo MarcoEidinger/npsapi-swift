@@ -1,28 +1,28 @@
 {
   "warnings": [
     {
-      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/Alert.swift",
+      "file": "/Users/d041771/git/npsapi-swift/Sources/NatParkSwiftKit/Model/Alert.swift",
       "line": 12,
       "symbol": "RequestableAlertField.void",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/Asset.swift",
+      "file": "/Users/d041771/git/npsapi-swift/Sources/NatParkSwiftKit/Model/Asset.swift",
       "line": 12,
       "symbol": "RequestableAssetField.void",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/NewsRelease.swift",
+      "file": "/Users/d041771/git/npsapi-swift/Sources/NatParkSwiftKit/Model/NewsRelease.swift",
       "line": 12,
       "symbol": "RequestableNewsReleaseField.void",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/d041771/git/npsapi-swift/Sources/npsapi-swift/Model/VisitorCenter.swift",
+      "file": "/Users/d041771/git/npsapi-swift/Sources/NatParkSwiftKit/Model/VisitorCenter.swift",
       "line": 13,
       "symbol": "RequestableVisitorCenterField.void",
       "symbol_kind": "source.lang.swift.decl.enumelement",

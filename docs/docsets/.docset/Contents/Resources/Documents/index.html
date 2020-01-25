@@ -32,7 +32,7 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/NationalParkServiceApi.html">NationalParkServiceApi</a>
+                <a href="Classes/DataService.html">DataService</a>
               </li>
             </ul>
           </li>
@@ -40,7 +40,7 @@
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/NationalParkServiceApiError.html">NationalParkServiceApiError</a>
+                <a href="Enums/DataServiceError.html">DataServiceError</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/ParkUnitDesignation.html">ParkUnitDesignation</a>
@@ -111,7 +111,7 @@
         <section>
           <section class="section">
             
-            <h1 id='npsapi-swift' class='heading'>npsapi-swift</h1>
+            <h1 id='natparkswiftkit' class='heading'>NatParkSwiftKit</h1>
 
 <p><a href="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager Compatible"></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></p>
@@ -140,9 +140,9 @@
 <h2 id='usage' class='heading'>Usage</h2>
 
 <p>Example to fetch information for a single park</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="n">npsapi_swift</span>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">NatParkSwiftKit</span>
 
-<span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">NationalParkServiceApi</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">DataService</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">cancellablePipeline</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="nf">fetchParks</span><span class="p">()</span>
     <span class="o">.</span><span class="nf">replaceError</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
     <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="p">(</span><span class="n">park</span><span class="p">)</span> <span class="k">in</span>
@@ -152,9 +152,9 @@
 </code></pre>
 
 <p>Parks and other entities of the National Park Service Data API can be fetched in bulks.</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="n">npsapi_swift</span>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">NatParkSwiftKit</span>
 
-<span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">NationalParkServiceApi</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">DataService</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">cancellablePipeline</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="nf">fetchParks</span><span class="p">()</span>
     <span class="o">.</span><span class="nf">sink</span><span class="p">(</span><span class="nv">receiveCompletion</span><span class="p">:</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span>
         <span class="nf">print</span><span class="p">(</span><span class="s">"Park request completed (either failed or was successful)"</span><span class="p">)</span>
@@ -166,12 +166,12 @@
 <span class="p">)</span>
 </code></pre>
 
-<p>As default the result set is limited to 50 records. This can be decreased or increased by setting <strong>limit</strong> in <code>RequestOption</code></p>
+<p>As default the result set is limited to 50 records. This can be decreased or increased by setting <strong>limit</strong> in <a href="https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html"><code><a href="Structs/RequestOptions.html">RequestOptions</a></code></a></p>
 
 <p>Below is a more complex search</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="n">npsapi_swift</span>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">NatParkSwiftKit</span>
 
-<span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">NationalParkServiceApi</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">DataService</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">publisher</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="nf">fetchParks</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="n">california</span><span class="p">],</span> <span class="kt">RequestOptions</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">limit</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">searchQuery</span><span class="p">:</span> <span class="s">"Yosemite National Park"</span><span class="p">,</span> <span class="nv">fields</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="o">.</span><span class="n">entranceFees</span><span class="p">,</span> <span class="o">.</span><span class="n">entrancePasses</span><span class="p">]))</span>
 
 <span class="k">let</span> <span class="nv">subscription</span> <span class="o">=</span> <span class="n">publisher</span>

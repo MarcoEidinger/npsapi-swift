@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-private enum NationalParkServiceApiEndpoint: String {
+private enum DataServiceEndpoint: String {
     case parks = "/parks"
     case alerts = "/alerts"
     case newsRelease = "/newsreleases"
@@ -10,25 +10,25 @@ private enum NationalParkServiceApiEndpoint: String {
 }
 
 /// Main API class to interact with the National Park Service API
-public class NationalParkServiceApi {
+public class DataService {
 
     /// Required API key which can be requested for free from NPS Developer website
     public let apiKey: String
 
     private let urlFactory: RequestUrlFactory = RequestUrlFactory()
 
-    private var errorTransformer: (Error) -> NationalParkServiceApiError = { error in
+    private var errorTransformer: (Error) -> DataServiceError = { error in
         switch error {
-        case NationalParkServiceApiError.invalidApiKey:
-            return NationalParkServiceApiError.invalidApiKey
+        case DataServiceError.invalidApiKey:
+            return DataServiceError.invalidApiKey
         default:
-            return NationalParkServiceApiError.cannotDecodeContent(error: error)
+            return DataServiceError.cannotDecodeContent(error: error)
         }
     }
 
     private var responseTransformer: (Data, URLResponse) throws -> Data = { data, response -> Data in
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw NationalParkServiceApiError.invalidApiKey
+            throw DataServiceError.invalidApiKey
         }
         return data
     }
@@ -47,7 +47,7 @@ public class NationalParkServiceApi {
 
         - Returns: a respective publisher
     */
-    public func fetchPark(_ parkCode: String) -> AnyPublisher<Park?, NationalParkServiceApiError> {
+    public func fetchPark(_ parkCode: String) -> AnyPublisher<Park?, DataServiceError> {
         return self.fetchParks(by: [parkCode], in: nil, nil)
             .map { $0.first }
             .eraseToAnyPublisher()
@@ -61,10 +61,10 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchParks(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], NationalParkServiceApiError> {
+    public func fetchParks(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], DataServiceError> {
 
         guard let validUrl = self.url(.parks, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
@@ -83,10 +83,10 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchAlerts(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], NationalParkServiceApiError> {
+    public func fetchAlerts(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], DataServiceError> {
 
         guard let validUrl = self.url(.alerts, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
@@ -105,10 +105,10 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], NationalParkServiceApiError> {
+    public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], DataServiceError> {
 
         guard let validUrl = self.url(.newsRelease, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
@@ -127,10 +127,10 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<[VisitorCenter], NationalParkServiceApiError> {
+    public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<[VisitorCenter], DataServiceError> {
 
         guard let validUrl = self.url(.visitorCenters, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
@@ -149,10 +149,10 @@ public class NationalParkServiceApi {
         - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
         - Returns: a respective publisher
     */
-    public func fetchAssets(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAssetField>? = nil) -> AnyPublisher<[Asset], NationalParkServiceApiError> {
+    public func fetchAssets(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAssetField>? = nil) -> AnyPublisher<[Asset], DataServiceError> {
 
         guard let validUrl = self.url(.assets, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: NationalParkServiceApiError.badURL).eraseToAnyPublisher()
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
         }
 
         return URLSession.shared.dataTaskPublisher(for: validUrl)
@@ -164,7 +164,7 @@ public class NationalParkServiceApi {
     }
 
     // MARK: private functions
-    private func url<T: RequestableField>(_ endpoint: NationalParkServiceApiEndpoint, by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<T>?) -> URL? {
+    private func url<T: RequestableField>(_ endpoint: DataServiceEndpoint, by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<T>?) -> URL? {
 
         var urlComponents = self.urlFactory.apiUrlComponents(for: endpoint.rawValue, authorizedBy: self.apiKey)
 

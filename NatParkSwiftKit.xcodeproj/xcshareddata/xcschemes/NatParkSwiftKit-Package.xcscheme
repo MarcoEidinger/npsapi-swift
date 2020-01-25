@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "npsapi-swift::npsapi-swift"
-               BuildableName = "npsapi_swift.framework"
-               BlueprintName = "npsapi-swift"
-               ReferencedContainer = "container:npsapi-swift.xcodeproj">
+               BlueprintIdentifier = "NatParkSwiftKit::NatParkSwiftKit"
+               BuildableName = "NatParkSwiftKit.framework"
+               BlueprintName = "NatParkSwiftKit"
+               ReferencedContainer = "container:NatParkSwiftKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,10 +33,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "npsapi-swift::npsapi-swiftTests"
-               BuildableName = "npsapi-swiftTests.xctest"
-               BlueprintName = "npsapi-swiftTests"
-               ReferencedContainer = "container:npsapi-swift.xcodeproj">
+               BlueprintIdentifier = "NatParkSwiftKit::NatParkSwiftKitTests"
+               BuildableName = "NatParkSwiftKitTests.xctest"
+               BlueprintName = "NatParkSwiftKitTests"
+               ReferencedContainer = "container:NatParkSwiftKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
