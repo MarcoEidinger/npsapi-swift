@@ -114,7 +114,7 @@
             <h1>Park</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Park</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Park</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Identifiable</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
 
                 </div>
               </div>
@@ -124,6 +124,66 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15NatParkSwiftKit0B0V2eeoiySbAC_ACtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15NatParkSwiftKit0B0V2eeoiySbAC_ACtFZ">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Park can be compared for equality using the equal-to operator (<code>==</code>) or inequality using the not-equal-to operator (<code>!=</code>)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">Park</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">Park</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L25-L27">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15NatParkSwiftKit0B0V4hash4intoys6HasherVz_tF"></a>
+                    <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15NatParkSwiftKit0B0V4hash4intoys6HasherVz_tF">hash(into:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Park conforms to the Hashable protocol and hence can be used in a set or as a dictionary key</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hash</span><span class="p">(</span><span class="n">into</span> <span class="nv">hasher</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hasher</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L30-L32">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -149,7 +209,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L28">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L39">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -179,7 +239,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L30">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L41">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -209,7 +269,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L32">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L43">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -239,7 +299,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L34">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -269,7 +329,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L36">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L47">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -299,7 +359,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L38">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L49">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -329,7 +389,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L40">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L51">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -359,7 +419,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L42">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L53">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -389,7 +449,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L44">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L55">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -419,7 +479,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L46">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L57">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -449,7 +509,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L48">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L59">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -479,7 +539,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L50">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L61">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -509,7 +569,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L52">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L63">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -539,7 +599,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L54">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L65">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -569,7 +629,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L56">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L67">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -577,9 +637,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Se4fromxs7Decoder_p_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Se4fromxs7Decoder_p_tKcfc">init(from:)</a>
+                    <a name="/s:15NatParkSwiftKit0B0V2id8parkCode4name8fullName11description11designation6states11gpsLocation14directionsInfo0P3Url07weatherQ03url6images12entranceFees0V6PassesACSS_S4SAA0B15UnitDesignationOSayAA10StateInUSAOGSo10CLLocationCSgSS10Foundation3URLVSgSSSgA2_SayAA8NpsImageVGSgSayAA3FeeVGSgA11_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(id:parkCode:name:fullName:description:designation:states:gpsLocation:directionsInfo:directionsUrl:weatherInfo:url:images:entranceFees:entrancePasses:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15NatParkSwiftKit0B0V2id8parkCode4name8fullName11description11designation6states11gpsLocation14directionsInfo0P3Url07weatherQ03url6images12entranceFees0V6PassesACSS_S4SAA0B15UnitDesignationOSayAA10StateInUSAOGSo10CLLocationCSgSS10Foundation3URLVSgSSSgA2_SayAA8NpsImageVGSgSayAA3FeeVGSgA11_tcfc">init(id:parkCode:name:fullName:description:designation:states:gpsLocation:directionsInfo:directionsUrl:weatherInfo:url:images:entranceFees:entrancePasses:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -587,7 +647,38 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Memberwise Initializer</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parkCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">fullName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">designation</span><span class="p">:</span> <span class="kt"><a href="../Enums/ParkUnitDesignation.html">ParkUnitDesignation</a></span><span class="p">,</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">],</span> <span class="nv">gpsLocation</span><span class="p">:</span> <span class="kt">CLLocation</span><span class="p">?,</span> <span class="nv">directionsInfo</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">directionsUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?,</span> <span class="nv">weatherInfo</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?,</span> <span class="nv">images</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/NpsImage.html">NpsImage</a></span><span class="p">]?,</span> <span class="nv">entranceFees</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Fee.html">Fee</a></span><span class="p">]?,</span> <span class="nv">entrancePasses</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Fee.html">Fee</a></span><span class="p">]?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L70-L86">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15NatParkSwiftKit0B0V4fromACs7Decoder_p_tKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15NatParkSwiftKit0B0V4fromACs7Decoder_p_tKcfc">init(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Decoderwise Initializer</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -598,7 +689,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L60-L78">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L91-L109">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

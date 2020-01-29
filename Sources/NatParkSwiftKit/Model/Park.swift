@@ -19,7 +19,18 @@ public enum RequestableParkField: String, RequestableField {
 }
 
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.
-public struct Park: Decodable {
+public struct Park: Decodable, Identifiable, Hashable {
+
+    /// Park can be compared for equality using the equal-to operator (`==`) or inequality using the not-equal-to operator (`!=`)
+    public static func == (lhs: Park, rhs: Park) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    /// Park conforms to the Hashable protocol and hence can be used in a set or as a dictionary key
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+
     enum CodingKeys: CodingKey {
         case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses
     }
@@ -54,9 +65,29 @@ public struct Park: Decodable {
     public let entranceFees: [Fee]?
     /// Passes available to provide entry into the park
     public let entrancePasses: [Fee]?
+
+    /// Memberwise Initializer
+    public init(id: String, parkCode: String, name: String, fullName: String, description: String, designation: ParkUnitDesignation, states: [StateInUSA], gpsLocation: CLLocation?, directionsInfo: String, directionsUrl: URL?, weatherInfo: String?, url: URL?, images: [NpsImage]?, entranceFees: [Fee]?, entrancePasses: [Fee]?) {
+        self.id = id
+        self.parkCode = parkCode
+        self.name = name
+        self.fullName = fullName
+        self.description = description
+        self.designation = designation
+        self.states = states
+        self.gpsLocation = gpsLocation
+        self.directionsInfo = directionsInfo
+        self.directionsUrl = directionsUrl
+        self.weatherInfo = weatherInfo
+        self.url = url
+        self.images = images
+        self.entranceFees = entranceFees
+        self.entrancePasses = entrancePasses
+    }
 }
 
 extension Park {
+    /// Decoderwise Initializer
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 

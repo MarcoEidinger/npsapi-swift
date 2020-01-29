@@ -1,8 +1,8 @@
 import XCTest
 
-import npsapi_swiftTests
+import NatParkSwiftKitTests
 
 var tests = [XCTestCaseEntry]()
-tests += npsapi_swiftTests.__allTests()
+tests += NatParkSwiftKitTests.__allTests()
 
 XCTMain(tests)

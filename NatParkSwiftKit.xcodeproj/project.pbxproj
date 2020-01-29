@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		8AED845A23E1A80C002A9380 /* ParkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AED845923E1A80C002A9380 /* ParkTests.swift */; };
 		OBJ_45 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* DataService.swift */; };
 		OBJ_46 /* DataServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* DataServiceError.swift */; };
 		OBJ_47 /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Internal.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8AED845923E1A80C002A9380 /* ParkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTests.swift; sourceTree = "<group>"; };
 		"NatParkSwiftKit::NatParkSwiftKit::Product" /* NatParkSwiftKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NatParkSwiftKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"NatParkSwiftKit::NatParkSwiftKitTests::Product" /* NatParkSwiftKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = NatParkSwiftKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* DataServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceError.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				OBJ_30 /* ParkUnitDesignationTests.swift */,
 				OBJ_31 /* StateInUSATests.swift */,
 				OBJ_32 /* XCTestManifests.swift */,
+				8AED845923E1A80C002A9380 /* ParkTests.swift */,
 			);
 			name = NatParkSwiftKitTests;
 			path = Tests/NatParkSwiftKitTests;
@@ -166,7 +169,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -176,7 +179,6 @@
 				OBJ_38 /* LICENSE */,
 				OBJ_39 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -265,7 +267,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_33 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -314,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				8AED845A23E1A80C002A9380 /* ParkTests.swift in Sources */,
 				OBJ_78 /* DataServiceTests.swift in Sources */,
 				OBJ_79 /* ParkUnitDesignationTests.swift in Sources */,
 				OBJ_80 /* StateInUSATests.swift in Sources */,
