@@ -41,12 +41,12 @@ public class DataService {
     // MARK: public functions
 
     /**
-        fetch single park information from the National Park Service Data API
+     fetch single park information from the National Park Service Data API
 
-        - Parameter parkCode: The National Park Service uses four letter codes - Alpha Codes - to abbreviate the names of its parks. If a park has one name in its title, like Yosemite National Park, the code word would be the first four letters of the name - YOSE. If the park has two names or more in its title, like Grand Canyon National Park, the code word would be the first two letters of each name - GRCA.
+     - Parameter parkCode: The National Park Service uses four letter codes - Alpha Codes - to abbreviate the names of its parks. If a park has one name in its title, like Yosemite National Park, the code word would be the first four letters of the name - YOSE. If the park has two names or more in its title, like Grand Canyon National Park, the code word would be the first two letters of each name - GRCA.
 
-        - Returns: a respective publisher
-    */
+     - Returns: a respective publisher
+     */
     public func fetchPark(_ parkCode: String) -> AnyPublisher<Park?, DataServiceError> {
         return self.fetchParks(by: [parkCode], in: nil, nil)
             .map { $0.first }
@@ -54,13 +54,13 @@ public class DataService {
     }
 
     /**
-        fetch park information from the National Park Service Data API
+     fetch park information from the National Park Service Data API
 
-        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
-        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
-        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
-        - Returns: a respective publisher
-    */
+     - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+     - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+     - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+     - Returns: a respective publisher
+     */
     public func fetchParks(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<[Park], DataServiceError> {
 
         guard let validUrl = self.url(.parks, by: parkCodes, in: states, requestOptions) else {
@@ -76,13 +76,13 @@ public class DataService {
     }
 
     /**
-        fetch alert release information from the National Park Service Data API
+     fetch alert release information from the National Park Service Data API
 
-        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
-        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
-        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
-        - Returns: a respective publisher
-    */
+     - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+     - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+     - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+     - Returns: a respective publisher
+     */
     public func fetchAlerts(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<[Alert], DataServiceError> {
 
         guard let validUrl = self.url(.alerts, by: parkCodes, in: states, requestOptions) else {
@@ -98,13 +98,13 @@ public class DataService {
     }
 
     /**
-        fetch news release information from the National Park Service Data API
+     fetch news release information from the National Park Service Data API
 
-        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
-        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
-        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
-        - Returns: a respective publisher
-    */
+     - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+     - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+     - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+     - Returns: a respective publisher
+     */
     public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<[NewsRelease], DataServiceError> {
 
         guard let validUrl = self.url(.newsRelease, by: parkCodes, in: states, requestOptions) else {
@@ -120,13 +120,13 @@ public class DataService {
     }
 
     /**
-        fetch visitor center information from the National Park Service Data API
+     fetch visitor center information from the National Park Service Data API
 
-        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
-        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
-        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
-        - Returns: a respective publisher
-    */
+     - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+     - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+     - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+     - Returns: a respective publisher
+     */
     public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<[VisitorCenter], DataServiceError> {
 
         guard let validUrl = self.url(.visitorCenters, by: parkCodes, in: states, requestOptions) else {
@@ -142,13 +142,13 @@ public class DataService {
     }
 
     /**
-        fetch asset (place) information from the National Park Service Data API
+     fetch asset (place) information from the National Park Service Data API
 
-        - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
-        - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
-        - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
-        - Returns: a respective publisher
-    */
+     - Parameter parkCodes: to limit results for certain parks only. Array of park codes, e.g. ["yell"]. Can be nil or empty
+     - Parameter states: to limit results for certain states only. Array of US states, e.g [.california]. Can be nil or empty
+     - Parameter requestOptions: to specify result amount (default: 50) and further influence search critierias
+     - Returns: a respective publisher
+     */
     public func fetchAssets(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAssetField>? = nil) -> AnyPublisher<[Asset], DataServiceError> {
 
         guard let validUrl = self.url(.assets, by: parkCodes, in: states, requestOptions) else {
