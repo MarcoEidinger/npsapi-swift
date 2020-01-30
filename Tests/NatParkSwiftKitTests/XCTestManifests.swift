@@ -47,7 +47,8 @@ extension StateInUSATests {
     static let __allTests__StateInUSATests = [
         ("testAbbreviation", testAbbreviation),
         ("testCompleteness", testCompleteness),
-        ("testName", testName),
+        ("testDoubleName", testDoubleName),
+        ("testSimpleName", testSimpleName),
     ]
 }
 

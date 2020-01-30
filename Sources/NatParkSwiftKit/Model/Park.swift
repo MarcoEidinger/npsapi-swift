@@ -21,16 +21,6 @@ public enum RequestableParkField: String, RequestableField {
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.
 public struct Park: Decodable, Identifiable, Hashable {
 
-    /// Park can be compared for equality using the equal-to operator (`==`) or inequality using the not-equal-to operator (`!=`)
-    public static func == (lhs: Park, rhs: Park) -> Bool {
-        return lhs.id == rhs.id
-    }
-
-    /// Park conforms to the Hashable protocol and hence can be used in a set or as a dictionary key
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
-    }
-
     enum CodingKeys: CodingKey {
         case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses
     }
@@ -83,6 +73,16 @@ public struct Park: Decodable, Identifiable, Hashable {
         self.images = images
         self.entranceFees = entranceFees
         self.entrancePasses = entrancePasses
+    }
+
+    /// Park can be compared for equality using the equal-to operator (`==`) or inequality using the not-equal-to operator (`!=`)
+    public static func == (lhs: Park, rhs: Park) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    /// Park conforms to the Hashable protocol and hence can be used in a set or as a dictionary key
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
     }
 }
 
