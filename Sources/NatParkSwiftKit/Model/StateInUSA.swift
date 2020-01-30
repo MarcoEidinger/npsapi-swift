@@ -66,13 +66,13 @@ public enum StateInUSA: String, CaseIterable {
     /// Nevada
     case nevada = "NV"
     /// New Hampshire
-    case newhampshire = "NH"
+    case newHampshire = "NH"
     /// New Jersey
-    case newjersey = "NJ"
+    case newJersey = "NJ"
     /// New Mexcio
-    case newmexico = "NM"
+    case newMexico = "NM"
     /// New York
-    case newyork = "NY"
+    case newYork = "NY"
     /// North Carolina
     case northCarolina = "NC"
     /// North Dakota
@@ -113,8 +113,17 @@ public enum StateInUSA: String, CaseIterable {
     /// Returns name of the state, e.g. "California" for .california
     public var name: String {
         let caseName = String(describing: self)
-        let capitlizedCaseName = caseName.prefix(1).capitalized + caseName.dropFirst()
-        return capitlizedCaseName
+        var caseNameMissingFirstCharacter: String = String(caseName.dropFirst())
+
+        for character in caseNameMissingFirstCharacter where character.isUppercase {
+            if let insertIndex = caseNameMissingFirstCharacter.firstIndex(of: character) {
+                caseNameMissingFirstCharacter.insert(" ", at: insertIndex)
+            }
+        }
+
+        let capitalizedCaseName = caseName.prefix(1).capitalized + caseNameMissingFirstCharacter
+
+        return capitalizedCaseName
     }
 
     /// Returns 2 character state code, e.g. "CA" for .california

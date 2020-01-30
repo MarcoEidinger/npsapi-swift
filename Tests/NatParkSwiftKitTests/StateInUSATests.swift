@@ -14,9 +14,14 @@ class StateInUSATests: XCTestCase {
         XCTAssertEqual(StateInUSA.allCases.count, 50)
     }
 
-    func testName() {
+    func testSimpleName() {
         let cali: StateInUSA = .california
         XCTAssertEqual(cali.name, "California")
+    }
+
+    func testDoubleName() {
+        let newyork: StateInUSA = .newYork
+        XCTAssertEqual(newyork.name, "New York")
     }
 
     func testAbbreviation() {
