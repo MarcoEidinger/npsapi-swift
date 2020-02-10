@@ -11,18 +11,18 @@ import NatParkSwiftKit
 class ParkTests: XCTestCase {
 
     func testMemberwiseInitializer() {
-        let park = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [])
+        let park = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [], addresses: [])
         XCTAssertNotNil(park)
     }
 
     func testEqualityComparision() {
-        let park1 = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [])
-        let park2 = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [])
+        let park1 = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [], addresses: [])
+        let park2 = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [], addresses: [])
         XCTAssertEqual(park1, park2)
     }
 
     func testHashableConformance() {
-        let park = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [])
+        let park = Park(id: "123", parkCode: "yell", name: "Yellowstone", fullName: "Yellowstone National Park", description: "Left", designation: .nationalPark, states: [.wyoming], gpsLocation: nil, directionsInfo: "", directionsUrl: nil, weatherInfo: "", url: nil, images: [], entranceFees: [], entrancePasses: [], addresses: [])
         var dictionary: [Park:String] = [:]
         dictionary[park] = "Cool"
         XCTAssertEqual(dictionary[park], "Cool")

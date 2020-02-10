@@ -10,13 +10,14 @@ import CoreLocation
 
 /// Requestable attribute of VisitorCenter model
 public enum RequestableVisitorCenterField: String, RequestableField {
-    case void
+    /// Visitor Center addresses (physical and mailing)
+    case addresses
 }
 
 /// Visitor center data includes location, contact, and operating hours information for visitor centers and other visitor contact facilities in national parks At least one visitor center is listed for each park; some parks with multiple visitor centers may include information about more than one
 public struct VisitorCenter: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
-        case id, parkCode, name, description, directionsInfo, directionsUrl, latLong
+        case id, parkCode, name, description, directionsInfo, directionsUrl, latLong, addresses
     }
 
     /// ID
@@ -33,6 +34,8 @@ public struct VisitorCenter: Decodable, Identifiable {
     public let directionsUrl: URL?
     /// News release image
     public let gpsLocation: CLLocation?
+    /// Visitor Center addresses (physical and mailing)
+    public let addresses: [Address]?
 }
 
 extension VisitorCenter {
@@ -45,5 +48,6 @@ extension VisitorCenter {
         directionsInfo = try values.decodeIfPresent(String.self, forKey: .directionsInfo)
         directionsUrl = try values.decodeIfPresent(String.self, forKey: .directionsUrl)?.toURL()
         gpsLocation = try values.decodeIfPresent(String.self, forKey: .latLong)?.toLocation()
+        addresses = try values.decodeIfPresent([Address].self, forKey: .addresses)
     }
 }
