@@ -106,7 +106,7 @@ final class DataServiceTests: XCTestCase {
 
     func testFetchParksWithRequestOption() {
         let expectation = XCTestExpectation(description: "Download Parks")
-        let publisher = api.fetchParks(by: nil, in: [.california], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses, .addresses]))
+        let publisher = api.fetchParks(by: nil, in: [.california], RequestOptions.init(limit: 5, searchQuery: "Yosemite National Park", fields: [.images, .entranceFees, .entrancePasses, .addresses, .contacts]))
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
@@ -125,6 +125,7 @@ final class DataServiceTests: XCTestCase {
             XCTAssertNotNil(parks.first?.entranceFees, "We should not have receive a non default field without requesting it")
             XCTAssertNotNil(parks.first?.entrancePasses, "We should not have receive a non default field without requesting it")
             XCTAssertNotNil(parks.first?.addresses, "We should not have receive a non default field without requesting it")
+            XCTAssertNotNil(parks.first?.contacts, "We should not have receive a non default field without requesting it")
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
@@ -196,7 +197,7 @@ final class DataServiceTests: XCTestCase {
 
     func testFetchVisitorCentersByParkCode() {
         let expectation = XCTestExpectation(description: "Download Visitor Centers")
-        let publisher = api.fetchVisitorCenters(by: [ParkCodeConstants.yellowstone], in: nil, RequestOptions.init(searchQuery: nil, fields: [.addresses, .operatingHours]))
+        let publisher = api.fetchVisitorCenters(by: [ParkCodeConstants.yellowstone], in: nil, RequestOptions.init(searchQuery: nil, fields: [.addresses, .operatingHours, .contacts]))
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
@@ -217,6 +218,7 @@ final class DataServiceTests: XCTestCase {
             XCTAssertNotNil(visitorCenters.first?.addresses)
             XCTAssertEqual(visitorCenters.first?.addresses?.first?.stateCode, StateInUSA.wyoming)
             XCTAssertNotNil(visitorCenters.first?.operatingHours)
+            XCTAssertNotNil(visitorCenters.first?.contacts)
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)

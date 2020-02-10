@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RequestableParkField Enumeration Reference</title>
+    <title>ContactInformation Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/RequestableParkField" class="dashAnchor"></a>
-    <a title="RequestableParkField Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Struct/ContactInformation" class="dashAnchor"></a>
+    <a title="ContactInformation Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (98% documented)</p>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        RequestableParkField Enumeration Reference
+        ContactInformation Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -138,14 +138,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RequestableParkField</h1>
+            <h1>ContactInformation</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">RequestableParkField</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt"><a href="../Protocols/RequestableField.html">RequestableField</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ContactInformation</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                 </div>
               </div>
-            <p>Requestable attribute of Park model</p>
+            <p>Information about contacting staff at the facility</p>
 
           </section>
           <section class="section task-group-section">
@@ -154,9 +154,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit011RequestableB5FieldO6imagesyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/images" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit011RequestableB5FieldO6imagesyA2CmF">images</a>
+                    <a name="/s:15NatParkSwiftKit18ContactInformationV12phoneNumbersSayAA15PhoneNumberInfoVGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/phoneNumbers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15NatParkSwiftKit18ContactInformationV12phoneNumbersSayAA15PhoneNumberInfoVGSgvp">phoneNumbers</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -164,19 +164,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Park images</p>
+                        <p>List of Contacts available via phone</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">images</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">phoneNumbers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/PhoneNumberInfo.html">PhoneNumberInfo</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L14">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/ContactInformation.swift#L13">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -184,9 +184,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit011RequestableB5FieldO12entranceFeesyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/entranceFees" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit011RequestableB5FieldO12entranceFeesyA2CmF">entranceFees</a>
+                    <a name="/s:15NatParkSwiftKit18ContactInformationV14emailAddressesSayAA16EmailAddressInfoVGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/emailAddresses" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15NatParkSwiftKit18ContactInformationV14emailAddressesSayAA16EmailAddressInfoVGSgvp">emailAddresses</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -194,139 +194,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Fee for entering the park</p>
+                        <p>List of Contacts available via email</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">entranceFees</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">emailAddresses</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/EmailAddressInfo.html">EmailAddressInfo</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L16">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15NatParkSwiftKit011RequestableB5FieldO14entrancePassesyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/entrancePasses" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit011RequestableB5FieldO14entrancePassesyA2CmF">entrancePasses</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Passes available to provide entry into the park</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">entrancePasses</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L18">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15NatParkSwiftKit011RequestableB5FieldO9addressesyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/addresses" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit011RequestableB5FieldO9addressesyA2CmF">addresses</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Park addresses (physical and mailing)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">addresses</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L20">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15NatParkSwiftKit011RequestableB5FieldO14operatingHoursyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/operatingHours" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit011RequestableB5FieldO14operatingHoursyA2CmF">operatingHours</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Hours and seasons when the park is open or closed</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">operatingHours</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L22">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15NatParkSwiftKit011RequestableB5FieldO8contactsyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/contacts" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit011RequestableB5FieldO8contactsyA2CmF">contacts</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Information about contacting staff at the facility</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">contacts</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/Park.swift#L24">Show on GitHub</a>
+                        <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/Model/ContactInformation.swift#L15">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

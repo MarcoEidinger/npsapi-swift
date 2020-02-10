@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		8A5274EF23F1E87B00B10C45 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5274EE23F1E87B00B10C45 /* Address.swift */; };
 		8A5274F323F1F38C00B10C45 /* OperatingHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5274F223F1F38C00B10C45 /* OperatingHour.swift */; };
+		8A5274F523F20A7F00B10C45 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5274F423F20A7F00B10C45 /* ContactInformation.swift */; };
 		8AED845A23E1A80C002A9380 /* ParkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AED845923E1A80C002A9380 /* ParkTests.swift */; };
 		OBJ_45 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* DataService.swift */; };
 		OBJ_46 /* DataServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* DataServiceError.swift */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		8A5274EE23F1E87B00B10C45 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		8A5274F223F1F38C00B10C45 /* OperatingHour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatingHour.swift; sourceTree = "<group>"; };
+		8A5274F423F20A7F00B10C45 /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
 		8AED845923E1A80C002A9380 /* ParkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTests.swift; sourceTree = "<group>"; };
 		"NatParkSwiftKit::NatParkSwiftKit::Product" /* NatParkSwiftKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NatParkSwiftKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"NatParkSwiftKit::NatParkSwiftKitTests::Product" /* NatParkSwiftKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = NatParkSwiftKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				OBJ_26 /* VisitorCenter.swift */,
 				8A5274EE23F1E87B00B10C45 /* Address.swift */,
 				8A5274F223F1F38C00B10C45 /* OperatingHour.swift */,
+				8A5274F423F20A7F00B10C45 /* ContactInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				OBJ_48 /* RequestUrlFactory.swift in Sources */,
 				OBJ_49 /* Alert.swift in Sources */,
 				OBJ_50 /* Asset.swift in Sources */,
+				8A5274F523F20A7F00B10C45 /* ContactInformation.swift in Sources */,
 				OBJ_51 /* Fee.swift in Sources */,
 				OBJ_52 /* NewsRelease.swift in Sources */,
 				OBJ_53 /* NpsImage.swift in Sources */,

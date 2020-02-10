@@ -14,12 +14,14 @@ public enum RequestableVisitorCenterField: String, RequestableField {
     case addresses
     /// Hours and seasons when the visitor center is open or closed
     case operatingHours
+
+    case contacts
 }
 
 /// Visitor center data includes location, contact, and operating hours information for visitor centers and other visitor contact facilities in national parks At least one visitor center is listed for each park; some parks with multiple visitor centers may include information about more than one
 public struct VisitorCenter: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
-        case id, parkCode, name, description, directionsInfo, directionsUrl, latLong, addresses, operatingHours
+        case id, parkCode, name, description, directionsInfo, directionsUrl, latLong, addresses, operatingHours, contacts
     }
 
     /// ID
@@ -40,6 +42,8 @@ public struct VisitorCenter: Decodable, Identifiable {
     public let addresses: [Address]?
     /// Hours and seasons when the visitor center is open or closed
     public let operatingHours: [OperatingHour]?
+
+    public let contacts: ContactInformation?
 }
 
 extension VisitorCenter {
@@ -54,5 +58,6 @@ extension VisitorCenter {
         gpsLocation = try values.decodeIfPresent(String.self, forKey: .latLong)?.toLocation()
         addresses = try values.decodeIfPresent([Address].self, forKey: .addresses)
         operatingHours = try values.decodeIfPresent([OperatingHour].self, forKey: .operatingHours)
+        contacts = try values.decodeIfPresent(ContactInformation.self, forKey: .contacts)
     }
 }

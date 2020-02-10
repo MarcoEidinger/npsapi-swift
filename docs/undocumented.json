@@ -20,6 +20,20 @@
       "symbol": "RequestableNewsReleaseField.void",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d041771/git/npsapi-swift/Sources/NatParkSwiftKit/Model/VisitorCenter.swift",
+      "line": 18,
+      "symbol": "RequestableVisitorCenterField.contacts",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d041771/git/npsapi-swift/Sources/NatParkSwiftKit/Model/VisitorCenter.swift",
+      "line": 46,
+      "symbol": "VisitorCenter.contacts",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/d041771/git/npsapi-swift"

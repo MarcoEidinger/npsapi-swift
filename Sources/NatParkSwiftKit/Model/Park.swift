@@ -20,14 +20,15 @@ public enum RequestableParkField: String, RequestableField {
     case addresses
     /// Hours and seasons when the park is open or closed
     case operatingHours
-
+    /// Information about contacting staff at the facility
+    case contacts
 }
 
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.
 public struct Park: Decodable, Identifiable, Hashable {
 
     enum CodingKeys: CodingKey {
-        case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses, addresses, operatingHours
+        case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses, addresses, operatingHours, contacts
     }
 
     /// Park identification string
@@ -64,9 +65,11 @@ public struct Park: Decodable, Identifiable, Hashable {
     public let addresses: [Address]?
     /// Hours and seasons when the park is open or closed
     public let operatingHours: [OperatingHour]?
+    /// Information about contacting staff at the facility
+    public let contacts: ContactInformation?
 
     /// Memberwise Initializer
-    public init(id: String, parkCode: String, name: String, fullName: String, description: String, designation: ParkUnitDesignation, states: [StateInUSA], gpsLocation: CLLocation?, directionsInfo: String, directionsUrl: URL?, weatherInfo: String?, url: URL?, images: [NpsImage]?, entranceFees: [Fee]?, entrancePasses: [Fee]?, addresses: [Address]?, operatingHours: [OperatingHour]?) {
+    public init(id: String, parkCode: String, name: String, fullName: String, description: String, designation: ParkUnitDesignation, states: [StateInUSA], gpsLocation: CLLocation?, directionsInfo: String, directionsUrl: URL?, weatherInfo: String?, url: URL?, images: [NpsImage]?, entranceFees: [Fee]?, entrancePasses: [Fee]?, addresses: [Address]?, operatingHours: [OperatingHour]?, contacts: ContactInformation?) {
         self.id = id
         self.parkCode = parkCode
         self.name = name
@@ -84,6 +87,7 @@ public struct Park: Decodable, Identifiable, Hashable {
         self.entrancePasses = entrancePasses
         self.addresses = addresses
         self.operatingHours = operatingHours
+        self.contacts = contacts
     }
 
     /// Park can be compared for equality using the equal-to operator (`==`) or inequality using the not-equal-to operator (`!=`)
@@ -119,5 +123,6 @@ extension Park {
         entrancePasses = try values.decodeIfPresent([Fee].self, forKey: .entrancePasses)
         addresses = try values.decodeIfPresent([Address].self, forKey: .addresses)
         operatingHours = try values.decodeIfPresent([OperatingHour].self, forKey: .operatingHours)
+        contacts = try values.decodeIfPresent(ContactInformation.self, forKey: .contacts)
     }
 }
