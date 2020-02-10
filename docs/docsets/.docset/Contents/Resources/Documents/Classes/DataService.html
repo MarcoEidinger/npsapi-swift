@@ -242,7 +242,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a respective publisher</p>
+                        <p>a respective publisher which outputs an array of parks</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/DataService.swift#L50-L54">Show on GitHub</a>
@@ -253,9 +253,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit11DataServiceC10fetchParks2by2in_7Combine12AnyPublisherVySayAA0B0VGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableB5FieldOGSgtF"></a>
+                    <a name="/s:15NatParkSwiftKit11DataServiceC10fetchParks2by2in_7Combine12AnyPublisherVySayAA0B0VG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableB5FieldOGSgtF"></a>
                     <a name="//apple_ref/swift/Method/fetchParks(by:in:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC10fetchParks2by2in_7Combine12AnyPublisherVySayAA0B0VGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableB5FieldOGSgtF">fetchParks(by:in:_:)</a>
+                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC10fetchParks2by2in_7Combine12AnyPublisherVySayAA0B0VG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableB5FieldOGSgtF">fetchParks(by:in:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -270,7 +270,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchParks</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableParkField.html">RequestableParkField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/Park.html">Park</a></span><span class="p">],</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchParks</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableParkField.html">RequestableParkField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Park.html">Park</a></span><span class="p">],</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Int</span><span class="p">),</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -319,7 +319,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a respective publisher</p>
+                        <p>a respective publisher which outputs a tuple containing an array of parks as well as the total count of matching items on the server</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/DataService.swift#L64-L76">Show on GitHub</a>
@@ -330,9 +330,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit11DataServiceC11fetchAlerts2by2in_7Combine12AnyPublisherVySayAA5AlertVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF"></a>
+                    <a name="/s:15NatParkSwiftKit11DataServiceC11fetchAlerts2by2in_7Combine12AnyPublisherVySayAA5AlertVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF"></a>
                     <a name="//apple_ref/swift/Method/fetchAlerts(by:in:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC11fetchAlerts2by2in_7Combine12AnyPublisherVySayAA5AlertVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF">fetchAlerts(by:in:_:)</a>
+                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC11fetchAlerts2by2in_7Combine12AnyPublisherVySayAA5AlertVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF">fetchAlerts(by:in:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -347,7 +347,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchAlerts</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableAlertField.html">RequestableAlertField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/Alert.html">Alert</a></span><span class="p">],</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchAlerts</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableAlertField.html">RequestableAlertField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Alert.html">Alert</a></span><span class="p">],</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Int</span><span class="p">),</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -396,7 +396,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a respective publisher</p>
+                        <p>a respective publisher which outputs a tuple containing an array of alerts as well as the total count of matching items on the server</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/DataService.swift#L86-L98">Show on GitHub</a>
@@ -407,9 +407,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit11DataServiceC17fetchNewsReleases2by2in_7Combine12AnyPublisherVySayAA0H7ReleaseVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF"></a>
+                    <a name="/s:15NatParkSwiftKit11DataServiceC17fetchNewsReleases2by2in_7Combine12AnyPublisherVySayAA0H7ReleaseVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF"></a>
                     <a name="//apple_ref/swift/Method/fetchNewsReleases(by:in:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC17fetchNewsReleases2by2in_7Combine12AnyPublisherVySayAA0H7ReleaseVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF">fetchNewsReleases(by:in:_:)</a>
+                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC17fetchNewsReleases2by2in_7Combine12AnyPublisherVySayAA0H7ReleaseVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF">fetchNewsReleases(by:in:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -424,7 +424,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchNewsReleases</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableNewsReleaseField.html">RequestableNewsReleaseField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/NewsRelease.html">NewsRelease</a></span><span class="p">],</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchNewsReleases</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableNewsReleaseField.html">RequestableNewsReleaseField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/NewsRelease.html">NewsRelease</a></span><span class="p">],</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Int</span><span class="p">),</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -473,7 +473,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a respective publisher</p>
+                        <p>a respective publisher which outputs a tuple containing an array of news releases as well as the total count of matching items on the server</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/DataService.swift#L108-L120">Show on GitHub</a>
@@ -484,9 +484,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit11DataServiceC19fetchVisitorCenters2by2in_7Combine12AnyPublisherVySayAA0H6CenterVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF"></a>
+                    <a name="/s:15NatParkSwiftKit11DataServiceC19fetchVisitorCenters2by2in_7Combine12AnyPublisherVySayAA0H6CenterVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF"></a>
                     <a name="//apple_ref/swift/Method/fetchVisitorCenters(by:in:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC19fetchVisitorCenters2by2in_7Combine12AnyPublisherVySayAA0H6CenterVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF">fetchVisitorCenters(by:in:_:)</a>
+                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC19fetchVisitorCenters2by2in_7Combine12AnyPublisherVySayAA0H6CenterVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestablehO5FieldOGSgtF">fetchVisitorCenters(by:in:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -501,7 +501,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchVisitorCenters</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableVisitorCenterField.html">RequestableVisitorCenterField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/VisitorCenter.html">VisitorCenter</a></span><span class="p">],</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchVisitorCenters</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableVisitorCenterField.html">RequestableVisitorCenterField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/VisitorCenter.html">VisitorCenter</a></span><span class="p">],</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Int</span><span class="p">),</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -550,7 +550,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a respective publisher</p>
+                        <p>a respective publisher which outputs a tuple containing an array of visitor centers as well as the total count of matching items on the server</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/DataService.swift#L130-L142">Show on GitHub</a>
@@ -561,9 +561,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15NatParkSwiftKit11DataServiceC11fetchAssets2by2in_7Combine12AnyPublisherVySayAA5AssetVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF"></a>
+                    <a name="/s:15NatParkSwiftKit11DataServiceC11fetchAssets2by2in_7Combine12AnyPublisherVySayAA5AssetVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF"></a>
                     <a name="//apple_ref/swift/Method/fetchAssets(by:in:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC11fetchAssets2by2in_7Combine12AnyPublisherVySayAA5AssetVGAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF">fetchAssets(by:in:_:)</a>
+                    <a class="token" href="#/s:15NatParkSwiftKit11DataServiceC11fetchAssets2by2in_7Combine12AnyPublisherVySayAA5AssetVG4data_Si5totaltAA0eF5ErrorOGSaySSGSg_SayAA10StateInUSAOGSgAA14RequestOptionsVyAA011RequestableN5FieldOGSgtF">fetchAssets(by:in:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -578,7 +578,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchAssets</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableAssetField.html">RequestableAssetField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/Asset.html">Asset</a></span><span class="p">],</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetchAssets</span><span class="p">(</span><span class="n">by</span> <span class="nv">parkCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="k">in</span> <span class="nv">states</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/StateInUSA.html">StateInUSA</a></span><span class="p">]?</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">_</span> <span class="nv">requestOptions</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestOptions.html">RequestOptions</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/RequestableAssetField.html">RequestableAssetField</a></span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Asset.html">Asset</a></span><span class="p">],</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Int</span><span class="p">),</span> <span class="kt"><a href="../Enums/DataServiceError.html">DataServiceError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -627,7 +627,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a respective publisher</p>
+                        <p>a respective publisher which outputs a tuple containing an array of assets as well as the total count of matching items on the server</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/MarcoEidinger/npsapi-swift/tree/master/Sources/NatParkSwiftKit/DataService.swift#L152-L164">Show on GitHub</a>

@@ -65,7 +65,7 @@
 
 /* Begin PBXFileReference section */
 		8AED845923E1A80C002A9380 /* ParkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTests.swift; sourceTree = "<group>"; };
-		"NatParkSwiftKit::NatParkSwiftKit::Product" /* NatParkSwiftKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NatParkSwiftKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"NatParkSwiftKit::NatParkSwiftKit::Product" /* NatParkSwiftKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NatParkSwiftKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"NatParkSwiftKit::NatParkSwiftKitTests::Product" /* NatParkSwiftKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = NatParkSwiftKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* DataServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceError.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
@@ -260,6 +260,12 @@
 			attributes = {
 				LastSwiftMigration = 9999;
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"NatParkSwiftKit::NatParkSwiftKit" = {
+						DevelopmentTeam = 6V66CC3AN6;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "NatParkSwiftKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -415,6 +421,9 @@
 		OBJ_42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V66CC3AN6;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -431,6 +440,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = NatParkSwiftKit;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
@@ -443,6 +453,9 @@
 		OBJ_43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V66CC3AN6;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +472,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = NatParkSwiftKit;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;

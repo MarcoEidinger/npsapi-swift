@@ -25,6 +25,10 @@ class RequestUrlFactory {
             urlComponents.queryItems?.append(URLQueryItem(name: "limit", value: String(limit)))
         }
 
+        if let start = requestOptions?.start {
+            urlComponents.queryItems?.append(URLQueryItem(name: "start", value: String(start)))
+        }
+
         if let query = requestOptions?.searchQuery {
             urlComponents.queryItems?.append(URLQueryItem(name: "q", value: query))
         }

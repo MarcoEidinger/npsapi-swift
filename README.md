@@ -47,7 +47,9 @@ let cancellablePipeline = api.fetchParks()
     }
 ```
 
-Parks and other entities of the National Park Service Data API can be fetched in bulks.
+Parks and other entities of the National Park Service Data API can be fetched in bulks. The result type is a tuple containing
+1) the data and
+2) total count (of items matching your query)
 
 ```swift
 import NatParkSwiftKit
@@ -56,7 +58,8 @@ let api = DataService(apiKey: "your-secret-API-key")
 let cancellablePipeline = api.fetchParks()
     .sink(receiveCompletion: { _ in
         print("Park request completed (either failed or was successful)")
-    }, receiveValue: { (parks) in
+    }, receiveValue: { (results) in
+		let (parks, allParksCount) = results
         parks.forEach {
             print("Park \($0.parkCode) is a \($0.designation)")
         }
@@ -64,7 +67,14 @@ let cancellablePipeline = api.fetchParks()
 )
 ```
 
-As default the result set is limited to 50 records. This can be decreased or increased by setting **limit** in [`RequestOptions`](https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html)
+As default the result set is limited to 50 records. Hence, in previous example the following is true
+
+```swift
+		// parks.count == 50
+		// allParksCount >= 497
+```
+
+The limit can be decreased or increased by setting **limit** in [`RequestOptions`](https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html)
 
 Below is a more complex search
 
@@ -84,10 +94,14 @@ let subscription = publisher
                 print(error)
             }
     }
-    ) { (parks) in
+    ) { (results) in
+		let (parks, _) = results
         print(parks.count) // 1
 }
 ```
+
+Analog to the HTTP API it is possible to use pagination by specifying **star** in conjunction with **limit** of `RequestOptions`. 
+However, I discourage to use it as the NPS server implementation seems to be unreliable  
 
 Complete client-side API documentation is available [here](https://marcoeidinger.github.io/npsapi-swift/)
 
