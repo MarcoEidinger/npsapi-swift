@@ -196,7 +196,7 @@ final class DataServiceTests: XCTestCase {
 
     func testFetchVisitorCentersByParkCode() {
         let expectation = XCTestExpectation(description: "Download Visitor Centers")
-        let publisher = api.fetchVisitorCenters(by: [ParkCodeConstants.yellowstone], in: nil, RequestOptions.init(searchQuery: nil, fields: [.addresses]))
+        let publisher = api.fetchVisitorCenters(by: [ParkCodeConstants.yellowstone], in: nil, RequestOptions.init(searchQuery: nil, fields: [.addresses, .operatingHours]))
         let subscription = publisher.sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
@@ -216,6 +216,7 @@ final class DataServiceTests: XCTestCase {
             XCTAssertNotNil(visitorCenters.first?.gpsLocation)
             XCTAssertNotNil(visitorCenters.first?.addresses)
             XCTAssertEqual(visitorCenters.first?.addresses?.first?.stateCode, StateInUSA.wyoming)
+            XCTAssertNotNil(visitorCenters.first?.operatingHours)
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
