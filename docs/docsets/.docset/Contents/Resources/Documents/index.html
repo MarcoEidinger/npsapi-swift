@@ -151,14 +151,17 @@
     <span class="p">}</span>
 </code></pre>
 
-<p>Parks and other entities of the National Park Service Data API can be fetched in bulks.</p>
+<p>Parks and other entities of the National Park Service Data API can be fetched in bulks. The result type is a tuple containing
+1) the data and
+2) total count (of items matching your query)</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">NatParkSwiftKit</span>
 
 <span class="k">let</span> <span class="nv">api</span> <span class="o">=</span> <span class="kt">DataService</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="s">"your-secret-API-key"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">cancellablePipeline</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="nf">fetchParks</span><span class="p">()</span>
     <span class="o">.</span><span class="nf">sink</span><span class="p">(</span><span class="nv">receiveCompletion</span><span class="p">:</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span>
         <span class="nf">print</span><span class="p">(</span><span class="s">"Park request completed (either failed or was successful)"</span><span class="p">)</span>
-    <span class="p">},</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">parks</span><span class="p">)</span> <span class="k">in</span>
+    <span class="p">},</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="k">in</span>
+        <span class="k">let</span> <span class="p">(</span><span class="nv">parks</span><span class="p">,</span> <span class="nv">allParksCount</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span>
         <span class="n">parks</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span>
             <span class="nf">print</span><span class="p">(</span><span class="s">"Park </span><span class="se">\(</span><span class="nv">$0</span><span class="o">.</span><span class="n">parkCode</span><span class="se">)</span><span class="s"> is a </span><span class="se">\(</span><span class="nv">$0</span><span class="o">.</span><span class="n">designation</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
         <span class="p">}</span>
@@ -166,7 +169,12 @@
 <span class="p">)</span>
 </code></pre>
 
-<p>As default the result set is limited to 50 records. This can be decreased or increased by setting <strong>limit</strong> in <a href="https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html"><code><a href="Structs/RequestOptions.html">RequestOptions</a></code></a></p>
+<p>As default the result set is limited to 50 records. Hence, in previous example the following is true</p>
+<pre class="highlight swift"><code>        <span class="c1">// parks.count == 50</span>
+        <span class="c1">// allParksCount &gt;= 497</span>
+</code></pre>
+
+<p>The limit can be decreased or increased by setting <strong>limit</strong> in <a href="https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html"><code><a href="Structs/RequestOptions.html">RequestOptions</a></code></a></p>
 
 <p>Below is a more complex search</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">NatParkSwiftKit</span>
@@ -184,10 +192,14 @@
                 <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
             <span class="p">}</span>
     <span class="p">}</span>
-    <span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">parks</span><span class="p">)</span> <span class="k">in</span>
+    <span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="k">in</span>
+        <span class="k">let</span> <span class="p">(</span><span class="nv">parks</span><span class="p">,</span> <span class="nv">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span>
         <span class="nf">print</span><span class="p">(</span><span class="n">parks</span><span class="o">.</span><span class="n">count</span><span class="p">)</span> <span class="c1">// 1</span>
 <span class="p">}</span>
 </code></pre>
+
+<p>Analog to the HTTP API it is possible to use pagination by specifying <strong>star</strong> in conjunction with <strong>limit</strong> of <code><a href="Structs/RequestOptions.html">RequestOptions</a></code>. 
+However, I discourage to use it as the NPS server implementation seems to be unreliable  </p>
 
 <p>Complete client-side API documentation is available <a href="https://marcoeidinger.github.io/npsapi-swift/">here</a></p>
 <h2 id='supported-types' class='heading'>Supported Types</h2>

@@ -89,8 +89,11 @@ final class DataServiceTests: XCTestCase {
                 print(error)
                 XCTFail("subscription returned error unexpectedly")
             }
-        }) { (parks) in
+        }) { (resultTuple) in
+            let (parks, totalCount) = resultTuple
+            XCTAssertTrue(totalCount > 0, "We have parks")
             XCTAssertTrue(parks.count > 0, "We have parks")
+            XCTAssertEqual(totalCount, parks.count, "Shall be same in this case as parks in california are less than default paging (50)")
             guard let firstState = parks.first?.states.first else {
                 XCTFail("No state")
                 return
@@ -112,13 +115,35 @@ final class DataServiceTests: XCTestCase {
                 print(error)
                 XCTFail("subscription returned error unexpectedly")
             }
-        }) { (parks) in
-            XCTAssertTrue(parks.count == 1, "We have parks")
+        }) { (resultTuple) in
+            let (parks, totalCount) = resultTuple
+            XCTAssertEqual(totalCount, 1, "We have parks")
+            XCTAssertEqual(parks.count, 1, "We have parks")
             XCTAssertEqual(parks.first?.parkCode, ParkCodeConstants.yosemite)
             XCTAssertNotNil(parks.first?.images, "We should have images")
             XCTAssertNotNil(parks.first?.images?.first?.url, "We should have image url")
             XCTAssertNotNil(parks.first?.entranceFees, "We should not have receive a non default field without requesting it")
             XCTAssertNotNil(parks.first?.entrancePasses, "We should not have receive a non default field without requesting it")
+        }
+        XCTAssertNotNil(subscription)
+        wait(for: [expectation], timeout: 45.0)
+    }
+    func testFetchParksWithPagination() {
+        let expectation = XCTestExpectation(description: "Download Parks")
+        let publisher = api.fetchParks(by: nil, in: nil, RequestOptions.init(limit: 20, start: 2, searchQuery: nil, fields: nil))
+        let subscription = publisher.sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                expectation.fulfill()
+            case .failure(let error):
+                print(error)
+                XCTFail("subscription returned error unexpectedly")
+            }
+        }) { (resultTuple) in
+            let (parks, totalCount) = resultTuple
+            XCTAssertGreaterThanOrEqual(totalCount, 497, "There are currently 497 parks in NPS")
+            XCTAssertEqual(parks.count, 20, "Only 20 were fetched from server")
+            XCTAssertEqual(parks.first?.parkCode, "bepa", "Not avia but bepa is first park due to the start parameter")
         }
         XCTAssertNotNil(subscription)
         wait(for: [expectation], timeout: 45.0)
@@ -135,7 +160,8 @@ final class DataServiceTests: XCTestCase {
                 print(error)
                 XCTFail("subscription returned error unexpectedly")
             }
-        }) { (alerts) in
+        }) { (resultTuple) in
+            let (alerts, _) = resultTuple
             XCTAssertTrue(alerts.count > 0, "We have alerts")
         }
         XCTAssertNotNil(subscription)
@@ -153,7 +179,8 @@ final class DataServiceTests: XCTestCase {
                 print(error)
                 XCTFail("subscription returned error unexpectedly")
             }
-        }) { (alerts) in
+        }) { (resultTuple) in
+            let (alerts, _) = resultTuple
             XCTAssertTrue(alerts.count > 0, "We have news releaes")
             XCTAssertNotNil(alerts.first?.id)
             XCTAssertNotNil(alerts.first?.title)
@@ -177,7 +204,8 @@ final class DataServiceTests: XCTestCase {
                 print(error)
                 XCTFail("subscription returned error unexpectedly")
             }
-        }) { (visitorCenters) in
+        }) { (resultTuple) in
+            let (visitorCenters, _) = resultTuple
             XCTAssertTrue(visitorCenters.count > 0, "We have visitor centers")
             XCTAssertNotNil(visitorCenters.first?.id)
             XCTAssertNotNil(visitorCenters.first?.name)
@@ -201,7 +229,8 @@ final class DataServiceTests: XCTestCase {
                 print(error)
                 XCTFail("subscription returned error unexpectedly")
             }
-        }) { (assets) in
+        }) { (resultTuple) in
+            let (assets, _) = resultTuple
             XCTAssertTrue(assets.count > 0, "We have assets / places")
             XCTAssertNotNil(assets.first?.id)
             XCTAssertNotNil(assets.first?.listingImage.url)
