@@ -8,7 +8,7 @@
 import Foundation
 
 /// Constituent political entity in the United States
-public enum StateInUSA: String, CaseIterable {
+public enum StateInUSA: String, CaseIterable, Decodable {
     /// Alabama
     case alabama = "AL"
     /// Alaska

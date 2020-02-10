@@ -16,13 +16,15 @@ public enum RequestableParkField: String, RequestableField {
     case entranceFees
     /// Passes available to provide entry into the park
     case entrancePasses
+    /// Park addresses (physical and mailing)
+    case addresses
 }
 
 /// Park basics data includes location, contact, operating hours, and entrance fee/pass information for each national park. At least five photos of each park are also available.
 public struct Park: Decodable, Identifiable, Hashable {
 
     enum CodingKeys: CodingKey {
-        case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses
+        case id, parkCode, name, fullName, description, url, designation, states, latLong, directionsInfo, directionsUrl, weatherInfo, images, entranceFees, entrancePasses, addresses
     }
 
     /// Park identification string
@@ -55,9 +57,11 @@ public struct Park: Decodable, Identifiable, Hashable {
     public let entranceFees: [Fee]?
     /// Passes available to provide entry into the park
     public let entrancePasses: [Fee]?
+    /// Park addresses (physical and mailing)
+    public let addresses: [Address]?
 
     /// Memberwise Initializer
-    public init(id: String, parkCode: String, name: String, fullName: String, description: String, designation: ParkUnitDesignation, states: [StateInUSA], gpsLocation: CLLocation?, directionsInfo: String, directionsUrl: URL?, weatherInfo: String?, url: URL?, images: [NpsImage]?, entranceFees: [Fee]?, entrancePasses: [Fee]?) {
+    public init(id: String, parkCode: String, name: String, fullName: String, description: String, designation: ParkUnitDesignation, states: [StateInUSA], gpsLocation: CLLocation?, directionsInfo: String, directionsUrl: URL?, weatherInfo: String?, url: URL?, images: [NpsImage]?, entranceFees: [Fee]?, entrancePasses: [Fee]?, addresses: [Address]?) {
         self.id = id
         self.parkCode = parkCode
         self.name = name
@@ -73,6 +77,7 @@ public struct Park: Decodable, Identifiable, Hashable {
         self.images = images
         self.entranceFees = entranceFees
         self.entrancePasses = entrancePasses
+        self.addresses = addresses
     }
 
     /// Park can be compared for equality using the equal-to operator (`==`) or inequality using the not-equal-to operator (`!=`)
@@ -106,5 +111,6 @@ extension Park {
         images = try values.decodeIfPresent([NpsImage].self, forKey: .images)
         entranceFees = try values.decodeIfPresent([Fee].self, forKey: .entranceFees)
         entrancePasses = try values.decodeIfPresent([Fee].self, forKey: .entrancePasses)
+        addresses = try values.decodeIfPresent([Address].self, forKey: .addresses)
     }
 }
