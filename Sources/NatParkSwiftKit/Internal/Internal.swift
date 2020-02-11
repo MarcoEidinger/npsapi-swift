@@ -8,29 +8,23 @@
 import Foundation
 import CoreLocation
 
-struct Parks: Decodable {
-    let total: String
-    let data: [Park]
+enum DataServiceEndpoint: String {
+    case parks = "/parks"
+    case alerts = "/alerts"
+    case newsRelease = "/newsreleases"
+    case visitorCenters = "/visitorcenters"
+    case assets = "/places"
 }
 
-struct Alerts: Decodable {
-    let total: String
-    let data: [Alert]
+protocol IResource: Decodable {
+    associatedtype NatParkServiceEntity
+    var total: String { get }
+    var data: [NatParkServiceEntity] { get }
 }
 
-struct NewsReleases: Decodable {
+struct Resources<NatParkServiceEntity: Decodable>: IResource {
     let total: String
-    let data: [NewsRelease]
-}
-
-struct VisitorCenters: Decodable {
-    let total: String
-    let data: [VisitorCenter]
-}
-
-struct Assets: Decodable {
-    let total: String
-    let data: [Asset]
+    let data: [NatParkServiceEntity]
 }
 
 extension String {

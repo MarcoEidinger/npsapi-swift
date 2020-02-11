@@ -1,13 +1,7 @@
 import Foundation
 import Combine
 
-private enum DataServiceEndpoint: String {
-    case parks = "/parks"
-    case alerts = "/alerts"
-    case newsRelease = "/newsreleases"
-    case visitorCenters = "/visitorcenters"
-    case assets = "/places"
-}
+
 
 /// Main API class to interact with the National Park Service API
 public class DataService {
@@ -63,16 +57,7 @@ public class DataService {
      */
     public func fetchParks(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableParkField>? = nil) -> AnyPublisher<(data: [Park], total: Int), DataServiceError> {
 
-        guard let validUrl = self.url(.parks, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
-        }
-
-        return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap(responseTransformer)
-            .decode(type: Parks.self, decoder: JSONDecoder())
-            .map { ($0.data, Int($0.total) ?? 0) }
-            .mapError(self.errorTransformer)
-            .eraseToAnyPublisher()
+        return self.fetch(Resources<Park>.self, by: parkCodes, in: states, honoring: requestOptions)
     }
 
     /**
@@ -85,16 +70,7 @@ public class DataService {
      */
     public func fetchAlerts(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAlertField>? = nil) -> AnyPublisher<(data: [Alert], total: Int), DataServiceError> {
 
-        guard let validUrl = self.url(.alerts, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
-        }
-
-        return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap(responseTransformer)
-            .decode(type: Alerts.self, decoder: JSONDecoder())
-            .map { ($0.data, Int($0.total) ?? 0) }
-            .mapError(self.errorTransformer)
-            .eraseToAnyPublisher()
+        return self.fetch(Resources<Alert>.self, by: parkCodes, in: states, honoring: requestOptions)
     }
 
     /**
@@ -107,16 +83,7 @@ public class DataService {
      */
     public func fetchNewsReleases(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableNewsReleaseField>? = nil) -> AnyPublisher<(data: [NewsRelease], total: Int), DataServiceError> {
 
-        guard let validUrl = self.url(.newsRelease, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
-        }
-
-        return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap(responseTransformer)
-            .decode(type: NewsReleases.self, decoder: JSONDecoder())
-            .map { ($0.data, Int($0.total) ?? 0) }
-            .mapError(self.errorTransformer)
-            .eraseToAnyPublisher()
+        return self.fetch(Resources<NewsRelease>.self, by: parkCodes, in: states, honoring: requestOptions)
     }
 
     /**
@@ -129,16 +96,7 @@ public class DataService {
      */
     public func fetchVisitorCenters(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableVisitorCenterField>? = nil) -> AnyPublisher<(data: [VisitorCenter], total: Int), DataServiceError> {
 
-        guard let validUrl = self.url(.visitorCenters, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
-        }
-
-        return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap(responseTransformer)
-            .decode(type: VisitorCenters.self, decoder: JSONDecoder())
-            .map { ($0.data, Int($0.total) ?? 0) }
-            .mapError(self.errorTransformer)
-            .eraseToAnyPublisher()
+        return self.fetch(Resources<VisitorCenter>.self, by: parkCodes, in: states, honoring: requestOptions)
     }
 
     /**
@@ -151,16 +109,7 @@ public class DataService {
      */
     public func fetchAssets(by parkCodes: [String]? = [], in states: [StateInUSA]? = [], _ requestOptions: RequestOptions<RequestableAssetField>? = nil) -> AnyPublisher<(data: [Asset], total: Int), DataServiceError> {
 
-        guard let validUrl = self.url(.assets, by: parkCodes, in: states, requestOptions) else {
-            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
-        }
-
-        return URLSession.shared.dataTaskPublisher(for: validUrl)
-            .tryMap(responseTransformer)
-            .decode(type: Assets.self, decoder: JSONDecoder())
-            .map { ($0.data, Int($0.total) ?? 0) }
-            .mapError(self.errorTransformer)
-            .eraseToAnyPublisher()
+        return self.fetch(Resources<Asset>.self, by: parkCodes, in: states, honoring: requestOptions)
     }
 
     // MARK: private functions
@@ -181,5 +130,44 @@ public class DataService {
         self.urlFactory.add(requestOptions, to: &urlComponents)
 
         return urlComponents.url
+    }
+
+    private func endpoint(of target: Decodable.Type) -> DataServiceEndpoint? {
+        switch target {
+        case is Park.Type:
+            return .parks
+        case is Alert.Type:
+            return .alerts
+        case is NewsRelease.Type:
+            return .newsRelease
+        case is VisitorCenter.Type:
+            return .visitorCenters
+        case is Asset.Type:
+            return .assets
+        default:
+            return nil
+        }
+    }
+
+    private func fetch<T: IResource, U: RequestableField>(_ value: T.Type, by parkCodes: [String]? = [], in states: [StateInUSA]? = [], honoring requestOptions: RequestOptions<U>? = nil) -> AnyPublisher<(data: [T.NatParkServiceEntity], total: Int), DataServiceError> {
+
+        guard let decodedAssociatedType = value.NatParkServiceEntity.self as? Decodable.Type else {
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
+        }
+
+        guard let endpoint = self.endpoint(of: decodedAssociatedType) else {
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
+        }
+
+        guard let validUrl = self.url(endpoint, by: parkCodes, in: states, requestOptions) else {
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
+        }
+
+        return URLSession.shared.dataTaskPublisher(for: validUrl)
+            .tryMap(responseTransformer)
+            .decode(type: T.self, decoder: JSONDecoder())
+            .map { ($0.data, Int($0.total) ?? 0) }
+            .mapError(self.errorTransformer)
+            .eraseToAnyPublisher()
     }
 }
