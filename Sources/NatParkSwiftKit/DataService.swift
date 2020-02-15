@@ -1,7 +1,11 @@
+//
+//  DataService.swift
+//  NatParkSwiftKit
+//
+//  Created by Eidinger, Marco on 1/18/20.
+//
 import Foundation
 import Combine
-
-
 
 /// Main API class to interact with the National Park Service API
 public class DataService {

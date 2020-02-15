@@ -1,6 +1,6 @@
 //
 //  UnitDesignation.swift
-//  npsapi-swift
+//  NatParkSwiftKit
 //
 //  Created by Eidinger, Marco on 1/23/20.
 //

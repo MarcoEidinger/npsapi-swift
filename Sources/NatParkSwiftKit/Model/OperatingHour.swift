@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  OperatingHour.swift
 //  NatParkSwiftKit
 //
 //  Created by Eidinger, Marco on 2/10/20.
