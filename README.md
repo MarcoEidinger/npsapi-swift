@@ -11,11 +11,7 @@
 
 Swift library for the US National Park Service application program interface (NPS API). The API provides information about parks / monuments / historical sites throughout the US.
 
-Required API key can be requested for free from [NPS Developer website](https://www.nps.gov/subjects/developer/get-started.htm)
-
-## Disclaimer
-
-Project is in **inital development state** and API incompatible changes can occur at any time in the master branch. As soon as the 1st release is done (~ Feb 2020) then API compatibility becomes target for future development activities.
+The required API key can be requested for free from [NPS Developer website](https://www.nps.gov/subjects/developer/get-started.htm)
 
 ## Installation
 
@@ -67,11 +63,11 @@ let cancellablePipeline = api.fetchParks()
 )
 ```
 
-As default the result set is limited to 50 records. Hence, in previous example the following is true
+As a default, the result set is limited to 50 records. Hence, in the previous example, the following is true
 
 ```swift
-		// parks.count == 50
-		// allParksCount >= 497
+// parks.count == 50
+// allParksCount >= 497
 ```
 
 The limit can be decreased or increased by setting **limit** in [`RequestOptions`](https://marcoeidinger.github.io/npsapi-swift/Structs/RequestOptions.html)
@@ -100,7 +96,7 @@ let subscription = publisher
 }
 ```
 
-Analog to the HTTP API it is possible to use pagination by specifying **star** in conjunction with **limit** of `RequestOptions`. 
+Analog to the HTTP API it is possible to use pagination by specifying **start** in conjunction with **limit** of `RequestOptions`. 
 However, I discourage to use it as the NPS server implementation seems to be unreliable  
 
 Complete client-side API documentation is available [here](https://marcoeidinger.github.io/npsapi-swift/)
